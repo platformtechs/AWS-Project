@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
-
+import {Link} from 'react-router-dom';
 class Page404 extends Component {
   render() {
     return (
@@ -25,7 +25,10 @@ class Page404 extends Component {
                 </InputGroupAddon>
               </InputGroup>
             </Col>
-          </Row>
+          </Row><br/><br/>
+          <div className="text-center">
+          <Link to={'/'}><Button class="display-2" color="danger" size="lg">Back</Button></Link>{'    '}
+</div>
         </Container>
       </div>
     );

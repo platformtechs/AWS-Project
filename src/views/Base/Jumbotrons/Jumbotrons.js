@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card, CardBody, CardHeader, Col, Container, Jumbotron, Row } from 'reactstrap';
+import { Card, CardBody, CardHeader, Col, Container, Jumbotron, Row } from 'reactstrap';
 
 class Jumbotrons extends Component {
 
@@ -7,7 +7,7 @@ class Jumbotrons extends Component {
     return (
       <div className="animated fadeIn">
         <Row>
-          <Col>
+          {/* <Col>
             <Card>
               <CardHeader>
                 <i className="fa fa-align-justify"></i><strong>Jumbotron</strong>
@@ -30,8 +30,8 @@ class Jumbotrons extends Component {
                 </Jumbotron>
               </CardBody>
             </Card>
-          </Col>
-          <Col>
+          </Col> */}
+
             <Card>
               <CardHeader>
                 <i className="fa fa-align-justify"></i><strong>Jumbotron</strong>
@@ -46,7 +46,7 @@ class Jumbotrons extends Component {
                 </Jumbotron>
               </CardBody>
             </Card>
-          </Col>
+
         </Row>
       </div>
     );

@@ -1,43 +1,68 @@
 export default {
   items: [
     {
-      name: 'Dashboard',
+      name: 'Home',
       url: '/dashboard',
-      icon: 'icon-speedometer',
-      badge: {
-        variant: 'info',
-        text: 'NEW',
-      },
+      icon: 'icon-home',
+
     },{
-        name: 'Pages',
-        url: '/pages',
-        icon: 'icon-star',
+      name: 'My Profile',
+      url: '/my-profile',
+      icon: 'icon-user',
+
+    },{
+      name: 'Change Password',
+      url: '/change-password',
+      icon: 'icon-key',
+
+    },{
+      name: 'Management',
+      url: '/management',
+      icon: 'icon-people',
+
+      children: [
+        {
+          name: 'Manage Users',
+          url: '/manage-users',
+          icon: 'icon-cursor',
+        },
+        {
+          name: 'Manage Roles',
+          url: '/manage-roles',
+          icon: 'icon-cursor',
+        }
+      ]
+    },{
+      name: 'Add Users',
+      url: '/add-users',
+      icon: 'icon-user-follow',
+
+    },{
+      name: 'Settings',
+      url: '/setting',
+      icon: 'icon-settings',
+
+    },{
+        name: 'Login/Register',
+        url: '/signup',
+        icon: 'icon-lock',
         children: [
           {
             name: 'Login',
             url: '/login',
-            icon: 'icon-star',
+            icon: 'icon-cursor',
           },
           {
             name: 'Register',
             url: '/register',
-            icon: 'icon-star',
-          },
-          {
-            name: 'Error 404',
-            url: '/404',
-            icon: 'icon-star',
-          },
-          {
-            name: 'Error 500',
-            url: '/500',
-            icon: 'icon-star',
-          },
+            icon: 'icon-cursor',
+          }
         ],
       },
     {
-      name:"Admin",
-      url:"/admin",
+      name:"Logout",
+      url:"/login",
+      icon: 'icon-logout',
     }
   ]
 };
