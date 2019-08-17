@@ -54,7 +54,7 @@ class App extends Component {
             <PrivateRoute
               path="/"
               name="Home"
-              render={props => <DefaultLayout {...props} />}
+              component={props => <DefaultLayout {...props} />}
             />
           </Switch>
         </React.Suspense>
@@ -63,7 +63,7 @@ class App extends Component {
   }
 }
 
-export const PrivateRoute = ({ component: Component, ...rest }) => {
+function PrivateRoute ({ component: Component, ...rest }) {
   return (
     <Route
       {...rest}

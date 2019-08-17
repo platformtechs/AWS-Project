@@ -15,16 +15,18 @@ class Login extends Component {
   login = async () => {
     try {
       let {username, password} = this.state
-      if (username & password) {
+      console.log("state", this.state)
         Auth.signIn({
             username,
             password
-          }).then(user => console.log(user))
+          }).then(data => {
+            console.log(data)
+            console.log("idToken", data.signInUserSession.idToken.jwtToken)
+            sessionStorage.setItem("aws@token", data.signInUserSession.idToken.jwtToken)
+            this.props.history.push("/")
+          })
           .catch(err => console.log("e", err))
-        } else {
-          alert("username password error")
-        }
-      } catch (error) {
+        }catch (error) {
         console.log("err", error)
       }      
   }
@@ -47,7 +49,7 @@ class Login extends Component {
                             <i className="icon-user"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="text" placeholder="Username" required onChange={(text) => this.setState({username:text})}/>
+                        <Input type="text" placeholder="Username" required onChange={e => this.setState({username:e.target.value})}/>
                       </InputGroup>
                       <InputGroup className="mb-4">
                         <InputGroupAddon addonType="prepend">
@@ -55,7 +57,7 @@ class Login extends Component {
                             <i className="icon-lock"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="password" placeholder="Password" required onChange={(text) => this.setState({password:text})}/>
+                        <Input type="password" placeholder="Password" required onChange={e => this.setState({password:e.target.value})}/>
                       </InputGroup>
                       <Row>
                         <Col xs="6">
