@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Spinner } from 'reactstrap';
 import { Auth } from 'aws-amplify';
 
 class Login extends Component {
@@ -9,12 +9,14 @@ class Login extends Component {
     this.state ={
       username: null,
       password: null,
+      isLoading: false
     }
   }
 
   login = async () => {
     try {
       let {username, password} = this.state
+      this.setState({isLoading:true})
       console.log("state", this.state)
         Auth.signIn({
             username,
@@ -22,16 +24,30 @@ class Login extends Component {
           }).then(data => {
             console.log(data)
             console.log("idToken", data.signInUserSession.idToken.jwtToken)
-            sessionStorage.setItem("aws@token", data.signInUserSession.idToken.jwtToken)
+            sessionStorage.setItem("aws@token", data.username)
+            this.setState({isLoading:false})
             this.props.history.push("/")
           })
-          .catch(err => console.log("e", err))
+          .catch(err => {
+            console.log("e", err)
+            this.setState({isLoading:false})
+          })
         }catch (error) {
         console.log("err", error)
+        this.setState({isLoading:false})
       }      
   }
 
   render() {
+    let { isLoading } = this.state
+    if(isLoading){
+      return (
+        <div className = "app flex-row align-items-center justify-content-center" >
+          <Spinner style={{width:"5rem", height:"5rem"}} color="primary"/>
+        </div>
+      )
+      
+    }
     return (
       <div className="app flex-row align-items-center">
         <Container>

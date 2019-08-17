@@ -68,15 +68,15 @@
 				}
 			}
 		},
-		"authawsprojecta509702a": {
+		"authawsprojectecd1c4a3": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/aws-project-awsdev-20190817191357-deployment/amplify-cfn-templates/auth/awsprojecta509702a-cloudformation-template.yml",
+				"TemplateURL": "https://s3.amazonaws.com/aws-project-awsreact-20190818040501-deployment/amplify-cfn-templates/auth/awsprojectecd1c4a3-cloudformation-template.yml",
 				"Parameters": {
-					"identityPoolName": "awsprojecta509702a_identitypool_a509702a",
+					"identityPoolName": "awsprojectecd1c4a3_identitypool_ecd1c4a3",
 					"allowUnauthenticatedIdentities": false,
-					"resourceNameTruncated": "awsproa509702a",
-					"userPoolName": "awsprojecta509702a_userpool_a509702a",
+					"resourceNameTruncated": "awsproecd1c4a3",
+					"userPoolName": "awsprojectecd1c4a3_userpool_ecd1c4a3",
 					"autoVerifiedAttributes": "email",
 					"mfaConfiguration": "OFF",
 					"mfaTypes": "SMS Text Message",
@@ -92,9 +92,9 @@
 					"userpoolClientRefreshTokenValidity": 30,
 					"userpoolClientWriteAttributes": "email",
 					"userpoolClientReadAttributes": "email",
-					"userpoolClientLambdaRole": "awsproa509702a_userpoolclient_lambda_role",
+					"userpoolClientLambdaRole": "awsproecd1c4a3_userpoolclient_lambda_role",
 					"userpoolClientSetAttributes": false,
-					"resourceName": "awsprojecta509702a",
+					"resourceName": "awsprojectecd1c4a3",
 					"authSelections": "identityPoolAndUserPool",
 					"authRoleArn": {
 						"Fn::GetAtt": [
@@ -109,34 +109,13 @@
 						]
 					},
 					"useDefault": "default",
+					"triggers": "{}",
+					"parentStack": {
+						"Ref": "AWS::StackId"
+					},
+					"permissions": "",
 					"dependsOn": "",
-					"env": "awsdev"
-				}
-			}
-		},
-		"functionawsprojectd0f3fe96CustomMessage": {
-			"Type": "AWS::CloudFormation::Stack",
-			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/aws-project-awsdev-20190817191357-deployment/amplify-cfn-templates/function/awsprojectd0f3fe96CustomMessage-cloudformation-template.json",
-				"Parameters": {
-					"modules": "verification-link",
-					"resourceName": "awsprojectd0f3fe96CustomMessage",
-					"REDIRECTURL": "",
-					"EMAILSUBJECT": "",
-					"EMAILMESSAGE": "",
-					"env": "awsdev"
-				}
-			}
-		},
-		"functionawsprojectd0f3fe96PostConfirmation": {
-			"Type": "AWS::CloudFormation::Stack",
-			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/aws-project-awsdev-20190817191357-deployment/amplify-cfn-templates/function/awsprojectd0f3fe96PostConfirmation-cloudformation-template.json",
-				"Parameters": {
-					"modules": "add-to-group",
-					"resourceName": "awsprojectd0f3fe96PostConfirmation",
-					"GROUP": "",
-					"env": "awsdev"
+					"env": "awsreact"
 				}
 			}
 		},
@@ -144,7 +123,7 @@
 			"DependsOn": [
 				"AuthRole",
 				"UnauthRole",
-				"authawsprojecta509702a"
+				"authawsprojectecd1c4a3"
 			],
 			"Type": "AWS::Lambda::Function",
 			"Properties": {
@@ -228,7 +207,7 @@
 				},
 				"idpId": {
 					"Fn::GetAtt": [
-						"authawsprojecta509702a",
+						"authawsprojectecd1c4a3",
 						"Outputs.IdentityPoolId"
 					]
 				},

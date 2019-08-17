@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
-import Amplify from "aws-amplify";
+import Amplify, { Auth } from "aws-amplify";
 // import { renderRoutes } from 'react-router-config';
 import "./App.scss";
 
 //initial configuration;
 import awsconfig from "./aws-exports";
 Amplify.configure(awsconfig);
+Auth.configure({storage: localStorage})
 
 const loading = () => (
   <div className="animated fadeIn pt-3 text-center">Loading...</div>

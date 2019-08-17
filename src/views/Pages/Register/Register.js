@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Spinner } from 'reactstrap';
 import {Auth} from 'aws-amplify';
 
 class Register extends Component {
@@ -9,7 +9,8 @@ class Register extends Component {
       username:null,
       password: null,
       email: null,
-      password2:null
+      password2:null,
+      isLoading:false
     }
   }
 
@@ -17,6 +18,7 @@ class Register extends Component {
     console.log("register")
     try {
       let {username, password, email, password2} = this.state;
+      this.setState({isLoading:true})
       console.log("state", this.state)
       if( password !== password2){
         alert("password not matched")
@@ -32,16 +34,30 @@ class Register extends Component {
             // other custom attributes 
           }
         })
-        .then(data => {
+        .then( data => {
           console.log("user", data)
-          sessionStorage.setItem("aws@token", data.storage.authToken)
+          sessionStorage.setItem("aws@token", data.username)
+          this.setState({isLoading:false})
+          this.props.history.push("/")
         })
-        .catch(err => console.log(err));
+        .catch(err =>{ 
+          console.log(err)
+          this.setState({isLoading:false})
+        });
     } catch (error) {
       console.log("err", error)
+      this.setState({isLoading:false})
     }
   }
   render() {
+    let { isLoading } = this.state
+    if(isLoading){
+      return (
+        <div className = "app flex-row align-items-center justify-content-center" >
+          <Spinner style={{width:"5rem", height:"5rem"}} color="primary"/>
+        </div>
+      )
+    }
     return (
       <div className="app flex-row align-items-center">
         <Container>

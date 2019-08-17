@@ -1,7 +1,29 @@
 import React, { Component } from 'react';
 import { Button, Table, Col, Container, Form, FormGroup, Input } from 'reactstrap';
 import {Link} from 'react-router-dom';
+import { IAM } from 'aws-sdk';
+import { Auth } from 'aws-amplify';
+
+
+
 export default class Query extends Component {
+
+  componentDidMount(){
+    Auth.currentCredentials()
+    .then(credentials => {
+      console.log("credentials", credentials)
+      const iAm = new IAM({
+        apiVersion: '2010-05-08',
+        credentials: Auth.essentialCredentials(credentials)
+      })
+      let params ={}
+      iAm.listUsers(params, (err, data)=>{
+           if (err) return console.log("error", err);
+           else console.log("data", data)
+      })
+    }).catch(err=> console.log("err", err))
+  }
+
   render() {
     return (
       <div className="container" style={{backgroundColor:'white',padding:20,marginBottom:20}}>

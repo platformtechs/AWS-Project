@@ -1,76 +1,36 @@
 {
 	"providers": {
 		"awscloudformation": {
-			"AuthRoleName": "aws-project-awsdev-20190817191357-authRole",
-			"UnauthRoleArn": "arn:aws:iam::805582015162:role/aws-project-awsdev-20190817191357-unauthRole",
-			"AuthRoleArn": "arn:aws:iam::805582015162:role/aws-project-awsdev-20190817191357-authRole",
+			"AuthRoleName": "aws-project-awsreact-20190818040501-authRole",
+			"UnauthRoleArn": "arn:aws:iam::546285673256:role/aws-project-awsreact-20190818040501-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::546285673256:role/aws-project-awsreact-20190818040501-authRole",
 			"Region": "us-east-1",
-			"DeploymentBucketName": "aws-project-awsdev-20190817191357-deployment",
-			"UnauthRoleName": "aws-project-awsdev-20190817191357-unauthRole",
-			"StackName": "aws-project-awsdev-20190817191357",
-			"StackId": "arn:aws:cloudformation:us-east-1:805582015162:stack/aws-project-awsdev-20190817191357/113aaf90-c0f5-11e9-bb2e-0a1b7b252ffe"
+			"DeploymentBucketName": "aws-project-awsreact-20190818040501-deployment",
+			"UnauthRoleName": "aws-project-awsreact-20190818040501-unauthRole",
+			"StackName": "aws-project-awsreact-20190818040501",
+			"StackId": "arn:aws:cloudformation:us-east-1:546285673256:stack/aws-project-awsreact-20190818040501/41958850-c13f-11e9-a8ec-121328bc7b22"
 		}
 	},
 	"auth": {
-		"awsprojecta509702a": {
+		"awsprojectecd1c4a3": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
 			"dependsOn": [],
 			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/aws-project-awsdev-20190817191357-deployment/amplify-cfn-templates/auth/awsprojecta509702a-cloudformation-template.yml",
-				"logicalId": "authawsprojecta509702a"
+				"s3TemplateURL": "https://s3.amazonaws.com/aws-project-awsreact-20190818040501-deployment/amplify-cfn-templates/auth/awsprojectecd1c4a3-cloudformation-template.yml",
+				"logicalId": "authawsprojectecd1c4a3"
 			},
-			"lastPushTimeStamp": "2019-08-17T15:44:24.152Z",
+			"lastPushTimeStamp": "2019-08-17T22:53:03.631Z",
 			"output": {
-				"AppClientSecret": "1i3jdcue0g1f1erg4patmuuugrhos8hhr9orhb01f47h03f1mrnl",
-				"UserPoolId": "us-east-1_jelFGHQMA",
-				"AppClientIDWeb": "2vqht1lg9r884ovnfr79p3nh3r",
-				"AppClientID": "4ai1m5kkj3q0ak6vfmeneupdm4",
-				"IdentityPoolId": "us-east-1:cdbac611-3ec4-4675-97cf-7cb3d223172c",
-				"IdentityPoolName": "awsprojecta509702a_identitypool_a509702a__awsdev",
-				"UserPoolName": "awsprojecta509702a_userpool_a509702a"
+				"AppClientSecret": "1ioj3l3kc0iab7f02dqfc6p19mhd5hhsm59hou2dmoi11rc72f2s",
+				"UserPoolId": "us-east-1_3VwS04wgu",
+				"AppClientIDWeb": "1pf04ou5anpntnbujcpq341l4h",
+				"AppClientID": "846f7nvmrjmrji56cmoq793kt",
+				"IdentityPoolId": "us-east-1:5b5197b4-6440-49df-b44b-901abe7fd2a4",
+				"IdentityPoolName": "awsprojectecd1c4a3_identitypool_ecd1c4a3__awsreact",
+				"UserPoolName": "awsprojectecd1c4a3_userpool_ecd1c4a3"
 			},
-			"lastPushDirHash": "tb4xFxomvP0K22uirfW2gUhOE50="
-		}
-	},
-	"function": {
-		"awsprojectd0f3fe96CustomMessage": {
-			"service": "Lambda",
-			"providerPlugin": "awscloudformation",
-			"build": true,
-			"lastBuildTimeStamp": "2019-08-17T14:34:01.053Z",
-			"lastPackageTimeStamp": "2019-08-17T14:34:09.880Z",
-			"distZipFilename": "awsprojectd0f3fe96CustomMessage-764d3443544376645651-build.zip",
-			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/aws-project-awsdev-20190817191357-deployment/amplify-cfn-templates/function/awsprojectd0f3fe96CustomMessage-cloudformation-template.json",
-				"logicalId": "functionawsprojectd0f3fe96CustomMessage"
-			},
-			"lastPushTimeStamp": "2019-08-17T15:44:24.149Z",
-			"output": {
-				"Region": "us-east-1",
-				"Arn": "arn:aws:lambda:us-east-1:805582015162:function:awsprojectd0f3fe96CustomMessage-awsdev",
-				"Name": "awsprojectd0f3fe96CustomMessage-awsdev"
-			},
-			"lastPushDirHash": "uekNW4/Ur1LOQXIYebA50EDVptQ="
-		},
-		"awsprojectd0f3fe96PostConfirmation": {
-			"service": "Lambda",
-			"providerPlugin": "awscloudformation",
-			"build": true,
-			"lastBuildTimeStamp": "2019-08-17T14:34:09.430Z",
-			"lastPackageTimeStamp": "2019-08-17T14:34:10.399Z",
-			"distZipFilename": "awsprojectd0f3fe96PostConfirmation-47554f4451562f515a62-build.zip",
-			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/aws-project-awsdev-20190817191357-deployment/amplify-cfn-templates/function/awsprojectd0f3fe96PostConfirmation-cloudformation-template.json",
-				"logicalId": "functionawsprojectd0f3fe96PostConfirmation"
-			},
-			"lastPushTimeStamp": "2019-08-17T15:44:24.151Z",
-			"output": {
-				"Region": "us-east-1",
-				"Arn": "arn:aws:lambda:us-east-1:805582015162:function:awsprojectd0f3fe96PostConfirmation-awsdev",
-				"Name": "awsprojectd0f3fe96PostConfirmation-awsdev"
-			},
-			"lastPushDirHash": "YWvHHEyuTyBflxQT7rMunORf5O0="
+			"lastPushDirHash": "sqPAYexeQ+b6PXOekgmXSCihvjM="
 		}
 	}
 }
