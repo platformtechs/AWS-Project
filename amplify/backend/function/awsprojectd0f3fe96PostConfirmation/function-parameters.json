@@ -1,0 +1,14 @@
+{
+    "trigger": true,
+    "modules": [
+        "add-to-group"
+    ],
+    "parentResource": "awsprojectd0f3fe96",
+    "functionName": "awsprojectd0f3fe96PostConfirmation",
+    "parentStack": "auth",
+    "triggerEnvs": "[]",
+    "triggerTemplate": "PostConfirmation.json.ejs",
+    "roleName": "awsprojectd0f3fe96PostConfirmation",
+    "skipEdit": true,
+    "resourceName": "awsprojectd0f3fe96PostConfirmation"
+}

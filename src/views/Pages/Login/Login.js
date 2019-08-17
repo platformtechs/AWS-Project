@@ -1,8 +1,34 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import { Auth } from 'aws-amplify';
 
 class Login extends Component {
+  constructor(props){
+    super(props);
+    this.state ={
+      username: null,
+      password: null,
+    }
+  }
+
+  login = async () => {
+    try {
+      let {username, password} = this.state
+      if (username & password) {
+        Auth.signIn({
+            username,
+            password
+          }).then(user => console.log(user))
+          .catch(err => console.log("e", err))
+        } else {
+          alert("username password error")
+        }
+      } catch (error) {
+        console.log("err", error)
+      }      
+  }
+
   render() {
     return (
       <div className="app flex-row align-items-center">
@@ -21,7 +47,7 @@ class Login extends Component {
                             <i className="icon-user"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="text" placeholder="Username" required />
+                        <Input type="text" placeholder="Username" required onChange={(text) => this.setState({username:text})}/>
                       </InputGroup>
                       <InputGroup className="mb-4">
                         <InputGroupAddon addonType="prepend">
@@ -29,11 +55,11 @@ class Login extends Component {
                             <i className="icon-lock"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="password" placeholder="Password" required />
+                        <Input type="password" placeholder="Password" required onChange={(text) => this.setState({password:text})}/>
                       </InputGroup>
                       <Row>
                         <Col xs="6">
-                          <Button color="primary" className="px-4">Login</Button>
+                          <Button color="primary" className="px-4" onClick={this.login}>Login</Button>
                         </Col>
                         <Col xs="6" className="text-right">
                           <Button color="link" className="px-0">Forgot password?</Button>
