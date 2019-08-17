@@ -1,0 +1,7 @@
+{
+    "awsdev": {
+        "configLevel": "project",
+        "useProfile": true,
+        "profileName": "amplify"
+    }
+}

@@ -1,0 +1,21 @@
+{
+	"auth": {
+		"awsprojecta509702a": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	},
+	"function": {
+		"awsprojectd0f3fe96CustomMessage": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true
+		},
+		"awsprojectd0f3fe96PostConfirmation": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true
+		}
+	}
+}
