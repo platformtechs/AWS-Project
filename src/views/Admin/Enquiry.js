@@ -12,7 +12,7 @@ export default class Query extends Component {
           <InputGroup>
             <h3 >Click on "Add New User" to Add new user</h3>{' '}
 
-              <Link to={"/404"}><Button color="danger" style={{marginLeft:20}} >Add New User</Button>
+              <Link to={"/form"}><Button color="danger" style={{marginLeft:20}} >Add New User</Button>
 </Link>
           </InputGroup></Col></Row>
           <Form>
