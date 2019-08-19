@@ -44,7 +44,7 @@ export default class Tab extends React.Component {
                 this.toggle("1");
               }}
             >
-              <h3>Key Details</h3>
+              <h3>User Details</h3>
             </NavLink>
           </NavItem>
           <NavItem>
@@ -54,7 +54,7 @@ export default class Tab extends React.Component {
                 this.toggle("2");
               }}
             >
-              <h3>Permission</h3>
+              <h3>Instance Details</h3>
             </NavLink>
           </NavItem>
         </Nav>
@@ -68,20 +68,24 @@ export default class Tab extends React.Component {
                   <Table>
                     <tbody>
                       <tr>
-                        <td>Role Name : </td>
+                        <td>Name : </td>
                         <td>Admin</td>
                       </tr>
                       <tr>
-                        <td>Object ID : </td>
-                        <td>xxxx</td>
+                        <td>Email-id : </td>
+                        <td>abc121@gmail.com</td>
                       </tr>
                       <tr>
-                        <td>Validity : </td>
-                        <td>31-09-2019</td>
+                        <td>Access Key : </td>
+                        <td>174duebafhhdau87233ry2-1284u9-81qjweh3u</td>
                       </tr>
                       <tr>
-                        <td>Active : </td>
-                        <td>True</td>
+                        <td>Access Id : </td>
+                        <td>djesrg28o42fb3oq8ry2bwhefw-jsdbh_ue93d7</td>
+                      </tr>
+                      <tr>
+                        <td>Status : </td>
+                        <td>Active</td>
                       </tr>
                     </tbody>
                   </Table>
@@ -95,6 +99,12 @@ export default class Tab extends React.Component {
                     <Button class="display-2" color="success" size="lg">
                       Edit
                     </Button>
+                    {"    "}
+                    <Link to={"/login"}>
+                      <Button class="display-2" color="primary" size="lg">
+                        Log In
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </Col>
@@ -102,374 +112,46 @@ export default class Tab extends React.Component {
           </TabPane>
 
           <TabPane tabId="2">
-            {" "}
-            <hr />
-            {/* Module Management */}
-            <Label>
-              <b>Module Management</b>
-            </Label>
-            <hr />
             <Row>
-              <Col xs="6" ms="2">
-                Module List
-              </Col>
-              <Col xs="6">
+              <Col sm="6">
+                <div container>
+                  <br />
+                  <br />
+                  <Table>
+                    <tbody>
+                      <tr>
+                        <td>Instance Name : </td>
+                        <td>Admin</td>
+                      </tr>
+                      <tr>
+                        <td>Instance region : </td>
+                        <td>abasf45f</td>
+                      </tr>
 
-                  <FormGroup check>
-                    <Row>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> View
-                        </Label>
-                      </Col>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> Edit
-                        </Label>
-                      </Col>
-                    </Row>
-                  </FormGroup>
-                </Col>
-
-            </Row>
-            <Row>
-              <Col xs="6">Module Add</Col>
-              <Col xs="6">
-
-                <FormGroup check>
-                    <Row>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> View
-                        </Label>
-                      </Col>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> Edit
-                        </Label>
-                      </Col>
-                    </Row>
-                  </FormGroup>
-                </Col>
-
-            </Row>
-            <Row>
-              <Col xs="6">Module Edit</Col>
-              <Col xs="6">
-
-                <FormGroup check>
-                    <Row>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> View
-                        </Label>
-                      </Col>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> Edit
-                        </Label>
-                      </Col>
-                    </Row>
-                  </FormGroup>
-                </Col>
-
-            </Row>{" "}
-            <hr />
-            {/* User Management */}
-            <Label>
-              <b>User Management</b>
-            </Label>
-            <hr />
-            <Row>
-              <Col xs="6" ms="2">
-                User List
-              </Col>
-              <Col xs="6">
-
-                <FormGroup check>
-                    <Row>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> View
-                        </Label>
-                      </Col>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> Edit
-                        </Label>
-                      </Col>
-                    </Row>
-                  </FormGroup>
-                </Col>
-
-            </Row>
-            <Row>
-              <Col xs="6">User Add</Col>
-              <Col xs="6">
-
-                <FormGroup check>
-                    <Row>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> View
-                        </Label>
-                      </Col>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> Edit
-                        </Label>
-                      </Col>
-                    </Row>
-                  </FormGroup>
-                </Col>
-
-            </Row>
-            <Row>
-              <Col xs="6">User Edit</Col>
-              <Col xs="6">
-              <FormGroup check>
-                    <Row>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> View
-                        </Label>
-                      </Col>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> Edit
-                        </Label>
-                      </Col>
-                    </Row>
-                  </FormGroup>
+                    </tbody>
+                  </Table>
+                  <div class="text-left">
+                    <Link to={"/dashboard"}>
+                      <Button class="display-2" color="secondary" size="lg">
+                        Back
+                      </Button>
+                    </Link>
+                    {"    "}
+                    <Button class="display-2" color="success" size="lg">
+                      Edit
+                    </Button>
+                    {"    "}
+                    <Link to={"/login"}>
+                      <Button class="display-2" color="primary" size="lg">
+                        Log In
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
               </Col>
             </Row>
-            <Row>
-              <Col xs="6" ms="2">
-                User List
-              </Col>
-              <Col xs="6">
-
-                <FormGroup check>
-                    <Row>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> View
-                        </Label>
-                      </Col>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> Edit
-                        </Label>
-                      </Col>
-                    </Row>
-                  </FormGroup>
-                </Col>
-              </Row>
-            <Row>
-              <Col xs="6" ms="2">
-                User Add
-              </Col>
-              <Col xs="6">
-                <FormGroup check>
-                    <Row>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> View
-                        </Label>
-                      </Col>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> Edit
-                        </Label>
-                      </Col>
-                    </Row>
-                  </FormGroup>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs="6" ms="2">
-                My Profile
-              </Col>
-              <Col xs="6">
-                <FormGroup check>
-                    <Row>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> View
-                        </Label>
-                      </Col>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> Edit
-                        </Label>
-                      </Col>
-                    </Row>
-                  </FormGroup>
-                </Col>
-            </Row>
-            <Row>
-              <Col xs="6" ms="2">
-                Change Password
-              </Col>
-              <Col xs="6">
-                <FormGroup check>
-                    <Row>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> View
-                        </Label>
-                      </Col>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> Edit
-                        </Label>
-                      </Col>
-                    </Row>
-                  </FormGroup>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs="6" ms="2">
-                Setting Edit
-              </Col>
-              <Col xs="6">
-                <FormGroup check>
-                    <Row>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> View
-                        </Label>
-                      </Col>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> Edit
-                        </Label>
-                      </Col>
-                    </Row>
-                  </FormGroup>
-                </Col>
-            </Row>
-            <Row>
-              <Col xs="6" ms="2">
-                Approve Users
-              </Col>
-              <Col xs="6">
-                <FormGroup check>
-                    <Row>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> View
-                        </Label>
-                      </Col>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> Edit
-                        </Label>
-                      </Col>
-                    </Row>
-                  </FormGroup>
-                </Col>
-            </Row>
-            <Row>
-              <Col xs="6" ms="2">
-                Enquiry List
-              </Col>
-              <Col xs="6">
-                <FormGroup check>
-                    <Row>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> View
-                        </Label>
-                      </Col>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> Edit
-                        </Label>
-                      </Col>
-                    </Row>
-                  </FormGroup>
-                </Col>
-            </Row>
-            <hr />
-            {/* Function Management */}
-            <Label>
-              <b>Module Management</b>
-            </Label>
-            <hr />
-            <Row>
-              <Col xs="6" ms="2">
-                Function List
-              </Col>
-              <Col xs="6">
-                <FormGroup check>
-                    <Row>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> View
-                        </Label>
-                      </Col>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> Edit
-                        </Label>
-                      </Col>
-                    </Row>
-                  </FormGroup>
-                </Col>
-            </Row>
-            <Row>
-              <Col xs="6">Function Add</Col>
-              <Col xs="6">
-                <FormGroup check>
-                    <Row>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> View
-                        </Label>
-                      </Col>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> Edit
-                        </Label>
-                      </Col>
-                    </Row>
-                  </FormGroup>
-                </Col>
-            </Row>
-            <Row>
-              <Col xs="6">Function Edit</Col>
-              <Col xs="6">
-                <FormGroup check>
-                    <Row>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> View
-                        </Label>
-                      </Col>
-                      <Col xs="6">
-                        <Label check>
-                          <Input type="checkbox" /> Edit
-                        </Label>
-                      </Col>
-                    </Row>
-                  </FormGroup>
-                </Col>
-            </Row>{" "}
-
-            <hr />
-            <div class="text-center">
-              <Link to={"/dashboard"}>
-                <Button class="display-2" color="secondary" size="lg">
-                  Back
-                </Button>
-              </Link>
-              {"    "}
-              <Button class="display-2" color="success" size="lg">
-                Edit
-              </Button>
-            </div>
           </TabPane>
+
         </TabContent>
       </div>
     );
