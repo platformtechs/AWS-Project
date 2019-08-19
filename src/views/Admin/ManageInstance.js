@@ -7,12 +7,12 @@ export default class Query extends Component {
       <div className="container" style={{ backgroundColor: 'white', padding: 20, marginBottom: 20 }}>
         <Container>
 
-          <Row><Col sm="6"></Col>
-            <Col sm="6">
+          <Row><Col sm="4"></Col>
+            <Col sm="8">
               <InputGroup>
-                <h3 >Click on "Add User" to Add User</h3>{' '}
+                <h3 >Click on "Add Instance" to Add Instances</h3>{'  '}
 
-                <Link to={"/formUser"}><Button color="danger" >Add User</Button>
+                <Link to={"/formUser"}><Button color="danger" >Add Instance</Button>
                 </Link>
               </InputGroup></Col></Row>
           <Form>
@@ -43,27 +43,27 @@ export default class Query extends Component {
             <tbody>
               <tr>
                 <th scope="row">1</th>
-                <td><Link to={"/tabUser"}>Mark</Link></td>
+                <td><Link to={"/tab"}>Mark</Link></td>
                 <td>Active</td>
               </tr>
               <tr>
                 <th scope="row">2</th>
-                <td><Link to={"/tabUser"}>Ovune</Link></td>
+                <td><Link to={"/tab"}>Ovune</Link></td>
                 <td>Active</td>
               </tr>
               <tr>
                 <th scope="row">3</th>
-                <td><Link to={"/tabUser"}>Throfh</Link></td>
+                <td><Link to={"/tab"}>Throfh</Link></td>
                 <td>Active</td>
               </tr>
               <tr>
                 <th scope="row">4</th>
-                <td><Link to={"/tabUser"}>Throfh</Link></td>
+                <td><Link to={"/tab"}>Throfh</Link></td>
                 <td>Active</td>
               </tr>
               <tr>
                 <th scope="row">5</th>
-                <td><Link to={"/tabUser"}>Throfh</Link></td>
+                <td><Link to={"/tab"}>Throfh</Link></td>
                 <td>Active</td>
               </tr>
             </tbody>
