@@ -2,22 +2,18 @@ import React from "react";
 import {
   TabContent,
   Table,
-<<<<<<< HEAD
-  FormGroup,
-  Label,
-  Input,
-=======
->>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
   TabPane,
   Nav,
   NavItem,
   NavLink,
   Row,
-  Col
+  Col,
+  Spinner
 } from "reactstrap";
 import classnames from "classnames";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import { getUser, authToken, userInfo } from "../../api";
 
 export default class Tab extends React.Component {
   constructor(props) {
@@ -25,10 +21,29 @@ export default class Tab extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      activeTab: "1"
+      activeTab: "1",
+      isLoading:false,
+      user:this.props.location.user
     };
   }
+  componentDidMount(){
+    if(!this.props.location.user){
+      this.fetchData()
+    }
+  }
 
+  fetchData = async () => {
+    try {
+      let token = await localStorage.getItem(authToken)
+    let _id = await localStorage.getItem(userInfo)
+    let {user} = getUser.auth(`Bearer ${token}`).post({_id}).json()
+    this.setState({user:user, isLoading:false})
+    } catch (error) {
+      console.log("err", error)
+      this.setState({isLoading:false})
+    }
+    
+  }
   toggle(tab) {
     if (this.state.activeTab !== tab) {
       this.setState({
@@ -37,6 +52,8 @@ export default class Tab extends React.Component {
     }
   }
   render() {
+    console.log(this.props)
+    let user = this.state.user
     return (
       <div>
         <Nav tabs>
@@ -47,33 +64,9 @@ export default class Tab extends React.Component {
                 this.toggle("1");
               }}
             >
-              <h3>Key Details</h3>
+              <h3>User Details</h3>
             </NavLink>
           </NavItem>
-<<<<<<< HEAD
-          <NavItem>
-            <NavLink
-              className={classnames({ active: this.state.activeTab === "2" })}
-              onClick={() => {
-                this.toggle("2");
-              }}
-            >
-              <h3>Role</h3>
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              className={classnames({ active: this.state.activeTab === "3" })}
-              onClick={() => {
-                this.toggle("3");
-              }}
-            >
-              <h3>Password</h3>
-            </NavLink>
-          </NavItem>
-=======
-
->>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
         </Nav>
         <TabContent activeTab={this.state.activeTab}>
           <TabPane tabId="1">
@@ -85,154 +78,38 @@ export default class Tab extends React.Component {
                   <Table>
                     <tbody>
                       <tr>
-<<<<<<< HEAD
-                        <td>Role Name : </td>
-                        <td>Admin</td>
-                      </tr>
-                      <tr>
-                        <td>Object ID : </td>
-                        <td>xxxx</td>
-                      </tr>
-                      <tr>
-                        <td>Validity : </td>
-                        <td>31-09-2019</td>
-                      </tr>
-                      <tr>
-                        <td>Active : </td>
-                        <td>True</td>
-                      </tr>
-                    </tbody>
-                  </Table>
-                  <div class="text-left">
-                    <Link to={"/dashboard"}>
-                      <Button class="display-2" color="secondary" size="lg">
-                        Back
-                      </Button>
-                    </Link>
-                    {"    "}
-                    <Button class="display-2" color="success" size="lg">
-                      Edit
-                    </Button>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-          </TabPane>
-
-          <TabPane tabId="2">
-            <Row>
-              <Col sm="6">
-                <div container>
-                  <br />
-                  <br />
-                  <Table>
-                    <h3>Roles</h3>
-                    <tbody>
-                      <tr><td>
-                      <FormGroup check>
-
-                        <Label check>
-                          <Input type="checkbox" /> Admin
-                        </Label>
-
-                  </FormGroup></td>
-                      </tr>
-                      <tr><td>
-                      <FormGroup check>
-
-                        <Label check>
-                          <Input type="checkbox" /> Sub-Admin
-                        </Label>
-
-
-
-                  </FormGroup></td>
-                      </tr>
-                      <tr><td>
-                      <FormGroup check>
-
-
-                        <Label check>
-                          <Input type="checkbox" /> User
-                        </Label>
-
-                  </FormGroup></td>
-                      </tr>
-
-                    </tbody>
-                  </Table>
-                  <div class="text-left">
-                    <Link to={"/dashboard"}>
-                      <Button class="display-2" color="secondary" size="lg">
-                        Back
-                      </Button>
-                    </Link>
-                    {"    "}
-                    <Button class="display-2" color="success" size="lg">
-                      Edit
-                    </Button>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-          </TabPane>
-
-
-          <TabPane tabId="3">
-            <Row>
-              <Col sm="6">
-                <div container>
-                  <br />
-                  <br />
-                  <Table>
-                    <tbody>
-                      <tr>
-                        <td>Login ID : </td>
-                        <td>Admin</td>
-                      </tr>
-
-                      <tr>
-                        <td>Password : </td>
-                        <td>XXXX</td>
-=======
                         <td>Name : </td>
-                        <td>User</td>
+                        <td>{user.username}</td>
                       </tr>
                       <tr>
                         <td>Email-id : </td>
-                        <td>dfj232@gmail.com</td>
+                        <td>{user.email}</td>
                       </tr>
                       <tr>
                         <td>Password : </td>
-                        <td>eluga129</td>
+                        <td>XXXXXXXXXXXX</td>
                       </tr>
                       <tr>
-                        <td>Access Key: </td>
-                        <td>174duebafhhdau87233ry2-1284u9-81qjweh3u</td>
+                        <td>Access Id : </td>
+                        <td>{user.accessid}</td>
                       </tr>
                       <tr>
-                        <td>Access Id: </td>
-                        <td>diwhe7238rbduye87320dnqiwdj7238_duq3d38</td>
+                        <td>Access Key : </td>
+                        <td>{user.accesskey}</td>
                       </tr>
                       <tr>
                         <td>Status : </td>
                         <td>Active</td>
->>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
                       </tr>
                     </tbody>
                   </Table>
                   <div class="text-left">
-                    <Link to={"/dashboard"}>
+                    <Link to={"/manage-subadmin"}>
                       <Button class="display-2" color="secondary" size="lg">
                         Back
                       </Button>
                     </Link>
                     {"    "}
-<<<<<<< HEAD
-                    <Button class="display-2" color="success" size="lg">
-                      Edit
-                    </Button>
-=======
                     <Link to={"/keyEdit"}>
                     <Button class="display-2" color="success" size="lg">
                       Edit
@@ -244,17 +121,12 @@ export default class Tab extends React.Component {
                         Log In
                       </Button>
                     </Link>
->>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
                   </div>
                 </div>
               </Col>
             </Row>
           </TabPane>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
         </TabContent>
       </div>
     );

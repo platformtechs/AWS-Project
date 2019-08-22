@@ -39,10 +39,10 @@ class DefaultHeader extends Component {
             <NavLink to="#" className="nav-link">Settings</NavLink>
           </NavItem> */}
         </Nav>
-        <Nav className="ml-auto" navbar>
-          <NavItem className="d-md-down-none">
+         <Nav className="ml-auto" navbar>
+        {/*  <NavItem className="d-md-down-none">
             <NavLink to="#" className="nav-link"><i className="icon-bell"></i><Badge pill color="danger">5</Badge></NavLink>
-          </NavItem>
+          </NavItem> */}
           {/* <NavItem className="d-md-down-none">
             <NavLink to="#" className="nav-link"><i className="icon-list"></i></NavLink>
           </NavItem>
@@ -70,7 +70,7 @@ class DefaultHeader extends Component {
             </DropdownMenu>
           </UncontrolledDropdown> */}
         </Nav>
-        <AppAsideToggler className="d-md-down-none" />
+        {/* <AppAsideToggler className="d-md-down-none" /> */}
         {/*<AppAsideToggler className="d-lg-none" mobile />*/}
       </React.Fragment>
     );

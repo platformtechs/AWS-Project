@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Spinner } from 'reactstrap';
+import { loginApi, authToken, userInfo } from '../../../api';
 // import { Auth } from 'aws-amplify';
 
 class Login extends Component {
@@ -15,12 +16,18 @@ class Login extends Component {
 
   login = async () => {
     try {
+       console.log("state", this.state)
       let {email, password} = this.state
-      // this.setState({isLoading:true})
-      console.log("state", this.state)
+      this.setState({isLoading:true})
+      let {user, token} = await loginApi.post({email, password}).json()
+      await localStorage.setItem(authToken, token);
+      await localStorage.setItem(userInfo, user._id)
+      this.props.history.push("/");
+      this.setState({isLoading:false})
         }catch (error) {
         console.log("err", error)
         this.setState({isLoading:false})
+        alert("login failed ! try again")
       }      
   }
 

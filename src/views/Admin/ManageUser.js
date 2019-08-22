@@ -1,62 +1,90 @@
-import React, { Component } from 'react';
-<<<<<<< HEAD
-import { Button, Table, Col, Container, Form, FormGroup, Input } from 'reactstrap';
-import {Link} from 'react-router-dom';
-import { IAM } from 'aws-sdk';
-import { Auth } from 'aws-amplify';
-
-
-
+import React, { Component } from "react";
+import {
+  Button,
+  Row,
+  InputGroup,
+  Table,
+  Col,
+  Container,
+  Form,
+  FormGroup,
+  Input,
+  Spinner
+} from "reactstrap";
+import { Link } from "react-router-dom";
+import { listResourceApi, authToken, userInfo } from "../../api";
+import { promises } from "fs";
 export default class Query extends Component {
-
+  constructor(props){
+    super(props);
+    this.state = {
+      users: [],
+      isLoading:false
+    }
+  }
   componentDidMount(){
-    Auth.currentCredentials()
-    .then(credentials => {
-      console.log("credentials", credentials)
-      const iAm = new IAM({
-        apiVersion: '2010-05-08',
-        credentials: Auth.essentialCredentials(credentials)
-      })
-      let params ={}
-      iAm.listUsers(params, (err, data)=>{
-           if (err) return console.log("error", err);
-           else console.log("data", data)
-      })
-    }).catch(err=> console.log("err", err))
+    this.fetchData();
+  }
+
+  fetchData = async () => {
+    try {
+      this.setState({isLoading:true})
+      let token = await localStorage.getItem(authToken);
+      let _id = await localStorage.getItem(userInfo)
+      let {result} = await listResourceApi.auth(`Bearer ${ token }`).post({_id, usertype:"SUBADMIN"}).json()
+      console.log("result", result)
+      this.setState({users:result, isLoading:false})
+    } catch (error) {
+      console.log("err", error);
+      this.setState({ isLoading: false });
+    }
   }
 
   render() {
+    let {users, isLoading} = this.state;
+    let userData = users ? users.map((user, index) => {
+      let  userLink = {
+        pathname:"/tabUser",
+        user
+      }
+      return(
+        <tr key={index}>
+        <th scope="row">{index +1 }</th>
+        <td>
+          <Link to={userLink}>{user.username}</Link>
+        </td>
+        <td>{user.email}</td>
+        <td>Active</td>
+      </tr>
+      )
+    }
+      ):"no data";
     return (
-      <div className="container" style={{backgroundColor:'white',padding:20,marginBottom:20}}>
+      <div
+        className="container"
+        style={{ backgroundColor: "white", padding: 20, marginBottom: 20 }}
+      >
         <Container>
-
-=======
-import { Button, Row, InputGroup, Table, Col, Container, Form, FormGroup, Input } from 'reactstrap';
-import { Link } from 'react-router-dom';
-export default class Query extends Component {
-  render() {
-    return (
-      <div className="container" style={{ backgroundColor: 'white', padding: 20, marginBottom: 20 }}>
-        <Container>
-
-          <Row><Col sm="6"></Col>
+          <Row>
             <Col sm="6">
+              <h3>click on button to add sub-admin</h3>
+            </Col>
+            <Col sm={{ size: 3, offset: 3 }}>
               <InputGroup>
-                <h3 >Click on "Add User" to Add User</h3>{' '}
-
-                <Link to={"/formUser"}><Button color="danger" >Add User</Button>
+                <Link to={"/formUser"}>
+                  <Button color="danger">Add Sub Admin</Button>
                 </Link>
-              </InputGroup></Col></Row>
->>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
-          <Form>
+              </InputGroup>
+            </Col>
+          </Row>
+          {/* <Form>
             <hr />
             <FormGroup row>
               <Col sm={11}>
-<<<<<<< HEAD
-                <Input placeholder="Enter name to search for User" required/>
-=======
-                <Input placeholder="Enter name to search for Role" required />
->>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
+                <Input
+                  placeholder="Enter name to search for Role"
+                  required
+                />
               </Col>
               <Button color="primary">Search</Button>
             </FormGroup>
@@ -68,115 +96,26 @@ export default class Query extends Component {
                 <option>Suspended</option>
               </Input>
             </FormGroup>
-          </Form>
-          <Table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Name</th>
-<<<<<<< HEAD
-                <th>Date Registed</th>
-                <th>Role</th>
-=======
->>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td><Link to={"/tabUser"}>Mark</Link></td>
-<<<<<<< HEAD
-                <td>2012/01/01</td>
-                <td>Admin</td>
-=======
->>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
-                <td>Active</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td><Link to={"/tabUser"}>Ovune</Link></td>
-<<<<<<< HEAD
-                <td>2012/01/01</td>
-                <td>Admin</td>
-=======
->>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
-                <td>Active</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td><Link to={"/tabUser"}>Throfh</Link></td>
-<<<<<<< HEAD
-                <td>2012/01/01</td>
-                <td>Admin</td>
-=======
->>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
-                <td>Active</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td><Link to={"/tabUser"}>Throfh</Link></td>
-<<<<<<< HEAD
-                <td>2012/01/01</td>
-                <td>Admin</td>
-=======
->>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
-                <td>Active</td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td><Link to={"/tabUser"}>Throfh</Link></td>
-<<<<<<< HEAD
-                <td>2012/01/01</td>
-                <td>Admin</td>
-                <td>Active</td>
-              </tr>
-
-              <tr>
-                <th scope="row">6</th>
-                <td><Link to={"/tabUser"}>Mark</Link></td>
-                <td>2012/01/01</td>
-                <td>Admin</td>
-                <td>Active</td>
-              </tr>
-              <tr>
-                <th scope="row">7</th>
-                <td><Link to={"/tabUser"}>Ovune</Link></td>
-                <td>2012/01/01</td>
-                <td>Admin</td>
-                <td>Active</td>
-              </tr>
-              <tr>
-                <th scope="row">8</th>
-                <td><Link to={"/tabUser"}>Throfh</Link></td>
-                <td>2012/01/01</td>
-                <td>Admin</td>
-                <td>Active</td>
-              </tr>
-              <tr>
-                <th scope="row">9</th>
-                <td><Link to={"/tabUser"}>Throfh</Link></td>
-                <td>2012/01/01</td>
-                <td>Admin</td>
-                <td>Active</td>
-              </tr>
-              <tr>
-                <th scope="row">10</th>
-                <td><Link to={"/tabUser"}>Throfh</Link></td>
-                <td>2012/01/01</td>
-                <td>Admin</td>
-                <td>Active</td>
-              </tr>
-            </tbody>
-       </Table>
-=======
-                <td>Active</td>
-              </tr>
-            </tbody>
-          </Table>
->>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
+          </Form> */}
+          {isLoading ? (
+            <div className = "app flex-row align-items-center justify-content-center" >
+              <Spinner style={{width:"5rem", height:"5rem"}} color="primary"/>
+            </div>
+          ) : (
+            <Table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>{userData}</tbody>
+            </Table>
+          )}
         </Container>
       </div>
-    )
+    );
   }
 }

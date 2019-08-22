@@ -28,7 +28,7 @@ export default {
         },
         {
           name: 'Manage Sub Admin',
-          url: '/manage-user',
+          url: '/manage-subadmin',
           icon: 'icon-cursor',
         },
         {
@@ -37,12 +37,12 @@ export default {
           icon: 'icon-cursor',
         }
       ]
-    },{
+    },/* {
       name: 'Add Users',
       url: '/add-users',
       icon: 'icon-user-follow',
 
-    },{
+    } */,{
         name: 'Login/Register',
         url: '/signup',
         icon: 'icon-lock',
