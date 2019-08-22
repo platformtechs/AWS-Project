@@ -10,7 +10,7 @@ export default class Query extends Component {
           <Row><Col sm="6"></Col>
             <Col sm="6">
               <InputGroup>
-                <h3 >Click on "Add User" to Add User</h3>{' '}
+                <h3 >Click on "Add Sub Admin" to </h3>{' '}
 
                 <Link to={"/formUser"}><Button color="danger" >Add User</Button>
                 </Link>

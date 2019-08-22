@@ -27,7 +27,7 @@ export default {
           icon: 'icon-cursor',
         },
         {
-          name: 'Manage User',
+          name: 'Manage Sub Admin',
           url: '/manage-user',
           icon: 'icon-cursor',
         },
