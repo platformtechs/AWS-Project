@@ -12,7 +12,7 @@ export default class Query extends Component {
               <InputGroup>
                 <h3 >Click on "Add Instance" to Add Instances</h3>{'  '}
 
-                <Link to={"/formUser"}><Button color="danger" >Add Instance</Button>
+                <Link to={"/formInstance"}><Button color="danger" >Add Instance</Button>
                 </Link>
               </InputGroup></Col></Row>
           <Form>

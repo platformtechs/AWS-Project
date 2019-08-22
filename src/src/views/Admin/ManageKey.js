@@ -10,7 +10,7 @@ export default class Query extends Component {
         <Row><Col sm="6"></Col>
 <Col sm="6">
           <InputGroup>
-            <h3 >Click on "Add Key" to Add Key</h3>{' '}
+            <h3 >Click on "Add Key"ssss to Add Key</h3>{' '}
 
               <Link to={"/form"}><Button color="danger" >Add Key</Button>
 </Link>

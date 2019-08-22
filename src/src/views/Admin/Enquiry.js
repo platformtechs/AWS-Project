@@ -7,13 +7,12 @@ export default class Query extends Component {
       <div className="container" style={{backgroundColor:'white',padding:20,marginBottom:20}}>
         <Container>
 
-<Row><Col sm="4"></Col>
-<Col sm="8">
+       <Row><Col sm="4"></Col>
+       <Col sm="8">
           <InputGroup>
             <h3 >Click on "Add New User" to Add new user</h3>{' '}
-
-              <Link to={"/form"}><Button color="danger" style={{marginLeft:20}} >Add New User</Button>
-</Link>
+            <Link to={"/form"}><Button color="danger" style={{marginLeft:20}} >Add New User</Button>
+            </Link>
           </InputGroup></Col></Row>
           <Form>
             <hr />
@@ -21,7 +20,7 @@ export default class Query extends Component {
               <Col sm={11}>
                 <Input placeholder="Enter name to search for User" required/>
               </Col>
-              <Button color="primary">Search</Button>
+              <Button color="primary" onClick={this.search}>Search</Button>
             </FormGroup>
             <FormGroup>
               <Input type="select" name="select" id="exampleSelect">
