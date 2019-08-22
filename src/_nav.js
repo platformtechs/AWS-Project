@@ -22,13 +22,18 @@ export default {
 
       children: [
         {
-          name: 'Manage Users',
-          url: '/manage-users',
+          name: 'Manage Key',
+          url: '/manage-key',
           icon: 'icon-cursor',
         },
         {
-          name: 'Manage Roles',
-          url: '/manage-roles',
+          name: 'Manage Sub Admin',
+          url: '/manage-user',
+          icon: 'icon-cursor',
+        },
+        {
+          name: 'Manage Instance',
+          url: '/manage-instance',
           icon: 'icon-cursor',
         }
       ]
@@ -36,11 +41,6 @@ export default {
       name: 'Add Users',
       url: '/add-users',
       icon: 'icon-user-follow',
-
-    },{
-      name: 'Settings',
-      url: '/setting',
-      icon: 'icon-settings',
 
     },{
         name: 'Login/Register',

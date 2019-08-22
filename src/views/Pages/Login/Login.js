@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Spinner } from 'reactstrap';
-import { Auth } from 'aws-amplify';
+// import { Auth } from 'aws-amplify';
 
 class Login extends Component {
   constructor(props){
     super(props);
     this.state ={
-      username: null,
+      email: null,
       password: null,
       isLoading: false
     }
@@ -15,23 +15,9 @@ class Login extends Component {
 
   login = async () => {
     try {
-      let {username, password} = this.state
-      this.setState({isLoading:true})
+      let {email, password} = this.state
+      // this.setState({isLoading:true})
       console.log("state", this.state)
-        Auth.signIn({
-            username,
-            password
-          }).then(data => {
-            console.log(data)
-            console.log("idToken", data.signInUserSession.idToken.jwtToken)
-            sessionStorage.setItem("aws@token", data.username)
-            this.setState({isLoading:false})
-            this.props.history.push("/")
-          })
-          .catch(err => {
-            console.log("e", err)
-            this.setState({isLoading:false})
-          })
         }catch (error) {
         console.log("err", error)
         this.setState({isLoading:false})
@@ -65,7 +51,7 @@ class Login extends Component {
                             <i className="icon-user"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="text" placeholder="Username" required onChange={e => this.setState({username:e.target.value})}/>
+                        <Input type="email" placeholder="email" required onChange={e=>this.setState({email:e.target.value})}/>
                       </InputGroup>
                       <InputGroup className="mb-4">
                         <InputGroupAddon addonType="prepend">
@@ -73,7 +59,7 @@ class Login extends Component {
                             <i className="icon-lock"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="password" placeholder="Password" required onChange={e => this.setState({password:e.target.value})}/>
+                        <Input type="password" placeholder="Password" required onChange={e => this.setState({ password: e.target.value })}/>
                       </InputGroup>
                       <Row>
                         <Col xs="6">
@@ -86,18 +72,18 @@ class Login extends Component {
                     </Form>
                   </CardBody>
                 </Card>
-                <Card className="text-white bg-primary py-5 d-md-down-none" style={{ width: '44%' }}>
+                {/* <Card className="text-white bg-primary py-5 d-md-down-none" style={{ width: '44%' }}>
                   <CardBody className="text-center">
                     <div>
                       <h2>Sign up</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                      <p>Lorem ipsum 1dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua.</p>
                       <Link to="/register">
                         <Button color="primary" className="mt-3" active tabIndex={-1}>Register Now!</Button>
                       </Link>
                     </div>
                   </CardBody>
-                </Card>
+                </Card> */}
               </CardGroup>
             </Col>
           </Row>

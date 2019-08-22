@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { Button, Table, Col, Container, Form, FormGroup, Input } from 'reactstrap';
 import {Link} from 'react-router-dom';
 import { IAM } from 'aws-sdk';
@@ -29,11 +30,33 @@ export default class Query extends Component {
       <div className="container" style={{backgroundColor:'white',padding:20,marginBottom:20}}>
         <Container>
 
+=======
+import { Button, Row, InputGroup, Table, Col, Container, Form, FormGroup, Input } from 'reactstrap';
+import { Link } from 'react-router-dom';
+export default class Query extends Component {
+  render() {
+    return (
+      <div className="container" style={{ backgroundColor: 'white', padding: 20, marginBottom: 20 }}>
+        <Container>
+
+          <Row><Col sm="6"></Col>
+            <Col sm="6">
+              <InputGroup>
+                <h3 >Click on "Add User" to Add User</h3>{' '}
+
+                <Link to={"/formUser"}><Button color="danger" >Add User</Button>
+                </Link>
+              </InputGroup></Col></Row>
+>>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
           <Form>
             <hr />
             <FormGroup row>
               <Col sm={11}>
+<<<<<<< HEAD
                 <Input placeholder="Enter name to search for User" required/>
+=======
+                <Input placeholder="Enter name to search for Role" required />
+>>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
               </Col>
               <Button color="primary">Search</Button>
             </FormGroup>
@@ -51,8 +74,11 @@ export default class Query extends Component {
               <tr>
                 <th>#</th>
                 <th>Name</th>
+<<<<<<< HEAD
                 <th>Date Registed</th>
                 <th>Role</th>
+=======
+>>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
                 <th>Status</th>
               </tr>
             </thead>
@@ -60,34 +86,47 @@ export default class Query extends Component {
               <tr>
                 <th scope="row">1</th>
                 <td><Link to={"/tabUser"}>Mark</Link></td>
+<<<<<<< HEAD
                 <td>2012/01/01</td>
                 <td>Admin</td>
+=======
+>>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
                 <td>Active</td>
               </tr>
               <tr>
                 <th scope="row">2</th>
                 <td><Link to={"/tabUser"}>Ovune</Link></td>
+<<<<<<< HEAD
                 <td>2012/01/01</td>
                 <td>Admin</td>
+=======
+>>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
                 <td>Active</td>
               </tr>
               <tr>
                 <th scope="row">3</th>
                 <td><Link to={"/tabUser"}>Throfh</Link></td>
+<<<<<<< HEAD
                 <td>2012/01/01</td>
                 <td>Admin</td>
+=======
+>>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
                 <td>Active</td>
               </tr>
               <tr>
                 <th scope="row">4</th>
                 <td><Link to={"/tabUser"}>Throfh</Link></td>
+<<<<<<< HEAD
                 <td>2012/01/01</td>
                 <td>Admin</td>
+=======
+>>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
                 <td>Active</td>
               </tr>
               <tr>
                 <th scope="row">5</th>
                 <td><Link to={"/tabUser"}>Throfh</Link></td>
+<<<<<<< HEAD
                 <td>2012/01/01</td>
                 <td>Admin</td>
                 <td>Active</td>
@@ -130,6 +169,12 @@ export default class Query extends Component {
               </tr>
             </tbody>
        </Table>
+=======
+                <td>Active</td>
+              </tr>
+            </tbody>
+          </Table>
+>>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
         </Container>
       </div>
     )

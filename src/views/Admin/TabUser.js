@@ -2,9 +2,12 @@ import React from "react";
 import {
   TabContent,
   Table,
+<<<<<<< HEAD
   FormGroup,
   Label,
   Input,
+=======
+>>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
   TabPane,
   Nav,
   NavItem,
@@ -47,6 +50,7 @@ export default class Tab extends React.Component {
               <h3>Key Details</h3>
             </NavLink>
           </NavItem>
+<<<<<<< HEAD
           <NavItem>
             <NavLink
               className={classnames({ active: this.state.activeTab === "2" })}
@@ -67,6 +71,9 @@ export default class Tab extends React.Component {
               <h3>Password</h3>
             </NavLink>
           </NavItem>
+=======
+
+>>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
         </Nav>
         <TabContent activeTab={this.state.activeTab}>
           <TabPane tabId="1">
@@ -78,6 +85,7 @@ export default class Tab extends React.Component {
                   <Table>
                     <tbody>
                       <tr>
+<<<<<<< HEAD
                         <td>Role Name : </td>
                         <td>Admin</td>
                       </tr>
@@ -186,6 +194,30 @@ export default class Tab extends React.Component {
                       <tr>
                         <td>Password : </td>
                         <td>XXXX</td>
+=======
+                        <td>Name : </td>
+                        <td>User</td>
+                      </tr>
+                      <tr>
+                        <td>Email-id : </td>
+                        <td>dfj232@gmail.com</td>
+                      </tr>
+                      <tr>
+                        <td>Password : </td>
+                        <td>eluga129</td>
+                      </tr>
+                      <tr>
+                        <td>Access Key: </td>
+                        <td>174duebafhhdau87233ry2-1284u9-81qjweh3u</td>
+                      </tr>
+                      <tr>
+                        <td>Access Id: </td>
+                        <td>diwhe7238rbduye87320dnqiwdj7238_duq3d38</td>
+                      </tr>
+                      <tr>
+                        <td>Status : </td>
+                        <td>Active</td>
+>>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
                       </tr>
                     </tbody>
                   </Table>
@@ -196,16 +228,33 @@ export default class Tab extends React.Component {
                       </Button>
                     </Link>
                     {"    "}
+<<<<<<< HEAD
                     <Button class="display-2" color="success" size="lg">
                       Edit
                     </Button>
+=======
+                    <Link to={"/keyEdit"}>
+                    <Button class="display-2" color="success" size="lg">
+                      Edit
+                    </Button>
+                    </Link>
+                    {"    "}
+                    <Link to={"/login"}>
+                      <Button class="display-2" color="primary" size="lg">
+                        Log In
+                      </Button>
+                    </Link>
+>>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
                   </div>
                 </div>
               </Col>
             </Row>
           </TabPane>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
         </TabContent>
       </div>
     );

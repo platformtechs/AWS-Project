@@ -44,7 +44,11 @@ export default class Tab extends React.Component {
                 this.toggle("1");
               }}
             >
+<<<<<<< HEAD
               <h3>Key Details</h3>
+=======
+              <h3>User Details</h3>
+>>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
             </NavLink>
           </NavItem>
           <NavItem>
@@ -54,7 +58,11 @@ export default class Tab extends React.Component {
                 this.toggle("2");
               }}
             >
+<<<<<<< HEAD
               <h3>Permission</h3>
+=======
+              <h3>Instance Details</h3>
+>>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
             </NavLink>
           </NavItem>
         </Nav>
@@ -68,6 +76,7 @@ export default class Tab extends React.Component {
                   <Table>
                     <tbody>
                       <tr>
+<<<<<<< HEAD
                         <td>Role Name : </td>
                         <td>Admin</td>
                       </tr>
@@ -82,6 +91,26 @@ export default class Tab extends React.Component {
                       <tr>
                         <td>Active : </td>
                         <td>True</td>
+=======
+                        <td>Name : </td>
+                        <td>Admin</td>
+                      </tr>
+                      <tr>
+                        <td>Email-id : </td>
+                        <td>abc121@gmail.com</td>
+                      </tr>
+                      <tr>
+                        <td>Access Key : </td>
+                        <td>174duebafhhdau87233ry2-1284u9-81qjweh3u</td>
+                      </tr>
+                      <tr>
+                        <td>Access Id : </td>
+                        <td>djesrg28o42fb3oq8ry2bwhefw-jsdbh_ue93d7</td>
+                      </tr>
+                      <tr>
+                        <td>Status : </td>
+                        <td>Active</td>
+>>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
                       </tr>
                     </tbody>
                   </Table>
@@ -92,9 +121,23 @@ export default class Tab extends React.Component {
                       </Button>
                     </Link>
                     {"    "}
+<<<<<<< HEAD
                     <Button class="display-2" color="success" size="lg">
                       Edit
                     </Button>
+=======
+                    <Link to={"/keyEdit"}>
+                    <Button class="display-2" color="success" size="lg">
+                      Edit
+                    </Button>
+                    </Link>
+                    {"    "}
+                    <Link to={"/login"}>
+                      <Button class="display-2" color="primary" size="lg">
+                        Log In
+                      </Button>
+                    </Link>
+>>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
                   </div>
                 </div>
               </Col>
@@ -102,6 +145,7 @@ export default class Tab extends React.Component {
           </TabPane>
 
           <TabPane tabId="2">
+<<<<<<< HEAD
             {" "}
             <hr />
             {/* Module Management */}
@@ -470,6 +514,48 @@ export default class Tab extends React.Component {
               </Button>
             </div>
           </TabPane>
+=======
+            <Row>
+              <Col sm="6">
+                <div container>
+                  <br />
+                  <br />
+                  <Table>
+                    <tbody>
+                      <tr>
+                        <td>Instance Name : </td>
+                        <td>Admin</td>
+                      </tr>
+                      <tr>
+                        <td>Instance region : </td>
+                        <td>abasf45f</td>
+                      </tr>
+
+                    </tbody>
+                  </Table>
+                  <div class="text-left">
+                    <Link to={"/dashboard"}>
+                      <Button class="display-2" color="secondary" size="lg">
+                        Back
+                      </Button>
+                    </Link>
+                    {"    "}
+                    <Button class="display-2" color="success" size="lg">
+                      Edit
+                    </Button>
+                    {"    "}
+                    <Link to={"/login"}>
+                      <Button class="display-2" color="primary" size="lg">
+                        Log In
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+          </TabPane>
+
+>>>>>>> c702315551e2a5c807897592d3685e17fb776d4f
         </TabContent>
       </div>
     );

@@ -2,26 +2,26 @@ import React, {Component} from "react";
 import { Button } from "reactstrap";
 import {Link} from "react-router-dom";
 import './style.css';
-import {Auth} from 'aws-amplify';
-import {CognitoIdentity, IAM} from 'aws-sdk';
+// import {Auth} from 'aws-amplify';
+// import {CognitoIdentity, IAM} from 'aws-sdk';
 
 
 
 export default class Example extends Component {
   componentDidMount(){
-    Auth.currentCredentials()
-    .then(credentials => {
-      console.log("credentials", credentials)
-      const iAm = new IAM({
-        apiVersion: '2010-05-08',
-        credentials: Auth.essentialCredentials(credentials)
-      })
-      let params ={}
-      iAm.listUserPools(params, (err, data)=>{
-           if (err) return console.log("error", err);
-           else console.log("data", data);
-      })
-    }).catch(err=> console.log("err", err))
+    // Auth.currentCredentials()
+    // .then(credentials => {
+    //   console.log("credentials", credentials)
+    //   const iAm = new IAM({
+    //     apiVersion: '2010-05-08',
+    //     credentials: Auth.essentialCredentials(credentials)
+    //   })
+    //   let params ={}
+    //   iAm.listUserPools(params, (err, data)=>{
+    //        if (err) return console.log("error", err);
+    //        else console.log("data", data);
+    //   })
+    // }).catch(err=> console.log("err", err))
   }
   render(){
     return (

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Spinner } from 'reactstrap';
-import {Auth} from 'aws-amplify';
+// import {Auth} from 'aws-amplify';
 
 class Register extends Component {
   constructor(props){
@@ -26,24 +26,24 @@ class Register extends Component {
       if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))){
         alert("enter valid email")
       }
-      Auth.signUp({
-          username,
-          password,
-          attributes: {
-            email, // optional
-            // other custom attributes 
-          }
-        })
-        .then( data => {
-          console.log("user", data)
-          sessionStorage.setItem("aws@token", data.username)
-          this.setState({isLoading:false})
-          this.props.history.push("/")
-        })
-        .catch(err =>{ 
-          console.log(err)
-          this.setState({isLoading:false})
-        });
+      // Auth.signUp({
+      //     username,
+      //     password,
+      //     attributes: {
+      //       email, // optional
+      //       // other custom attributes 
+      //     }
+      //   })
+      //   .then( data => {
+      //     console.log("user", data)
+      //     sessionStorage.setItem("aws@token", data.username)
+      //     this.setState({isLoading:false})
+      //     this.props.history.push("/")
+      //   })
+      //   .catch(err =>{ 
+      //     console.log(err)
+      //     this.setState({isLoading:false})
+      //   });
     } catch (error) {
       console.log("err", error)
       this.setState({isLoading:false})
