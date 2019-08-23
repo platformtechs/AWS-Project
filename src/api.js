@@ -1,6 +1,7 @@
 import wretch from "wretch";
 
 const ROOT_URL = "http://localhost:5000";
+// const ROOT_URL = "https: //peaceful-brook-33524.herokuapp.com/"
 
 export const awsApi = wretch(ROOT_URL);
 
@@ -20,4 +21,6 @@ export const loginApi = UserApi.url('/login');
 
 export const authToken = "aws/authToken"
 
-export const userInfo = "aws/userInfo"
+export const userInfo = "aws/userInfo";
+
+export const createInstance = awsApi.url('/api/aws/create');

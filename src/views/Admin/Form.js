@@ -7,6 +7,7 @@ export default class Example extends React.Component {
       super(props);
       this.state = {
         username: null,
+        email:null,
         password: null,
         accessid: null,
         accesskey: null,
@@ -22,6 +23,7 @@ export default class Example extends React.Component {
           password,
           accesskey,
           accessid,
+          email
         } = this.state;
         this.setState({
           isLoading: true
@@ -29,7 +31,7 @@ export default class Example extends React.Component {
         console.log("state", this.state)
         let token = await localStorage.getItem(authToken)
         let createdby = await localStorage.getItem(userInfo)
-        let {user} = await createKeyApi.auth(`Bearer ${ token }`).post({accessid, accesskey, password, username, createdby})
+        let {user} = await createKeyApi.auth(`Bearer ${ token }`).post({accessid, accesskey, password, username, createdby, email})
         console.log("usr", user)
         this.props.history.goBack();
         alert("user created")
@@ -64,7 +66,7 @@ export default class Example extends React.Component {
                           <i className="icon-user"></i>
                         </InputGroupText>
                       </InputGroupAddon>
-                      <Input type="text" placeholder="Username" required onChange={e => this.setState({username:e.target.value})}/>
+                      <Input type="text" placeholder="email" required onChange={e => this.setState({email:e.target.value})}/>
                     </InputGroup>
                     <InputGroup className="mb-3">
                       <InputGroupAddon addonType="prepend">

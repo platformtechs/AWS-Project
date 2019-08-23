@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Spinner } from 'reactstrap';
-import { createSubAdminApi, authToken, userInfo } from '../../api';
+import { createSubAdminApi, authToken, userInfo, createInstance } from '../../api';
 
 export default class Example extends React.Component {
     constructor(props) {
@@ -34,8 +34,8 @@ export default class Example extends React.Component {
           alert("enter valid email")
         }
         let token = await localStorage.getItem(authToken)
-        let createdby = await localStorage.getItem(userInfo)
-        let {user} = await createSubAdminApi.auth(`Bearer ${ token }`).post({email, password, username, createdby})
+        let _id = await localStorage.getItem(userInfo)
+        let {user} = await createInstance.auth(`Bearer ${ token }`).post({email, password, username, _id})
         console.log("usr", user)
         this.props.history.goBack();
         alert("user created")

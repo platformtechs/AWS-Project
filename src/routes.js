@@ -11,6 +11,7 @@ const User = React.lazy(()=>import('./views/Admin/User'));
 const Tabs = React.lazy(()=>import('./views/Admin/Tab'));
 const TabUser = React.lazy(()=>import('./views/Admin/TabUser'));
 const Form = React.lazy(()=>import('./views/Admin/Form'));
+const FormInstance = React.lazy(() => import('./views/Admin/formInstance'));
 const ManageInstance =React.lazy(()=>import('./views/Admin/ManageInstance'));
 const ManageUser = React.lazy(() => import('./views/Admin/ManageUser'));
 const FormUser = React.lazy(() => import('./views/Admin/FormUser'));
@@ -33,6 +34,7 @@ const routes = [
   { path: '/manage-instance', exact: true, name: "ManageInstance", component: ManageInstance },
   { path: '/manage-user', exact: true, name: "ManageUser", component: ManageUser },
   { path: '/formUser', exact: true, name: "FormUser", component: FormUser },
+  { path: '/formInstance', exact: true, name: "FormInstance", component: FormInstance },
   { path: '/keyEdit', exact: true, name: "KeyEdit", component: KeyEdit },
 
 ];

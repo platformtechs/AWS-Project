@@ -71,7 +71,7 @@ export default class Query extends Component {
             <Col sm="6">
               <InputGroup>
                 <h3>Click to Add Key {" "}</h3>{" "}
-                <Link to={"/form"}>
+                <Link to={"/formInstance"}>
                   <Button color="danger">Add Key</Button>
                 </Link>
               </InputGroup>
