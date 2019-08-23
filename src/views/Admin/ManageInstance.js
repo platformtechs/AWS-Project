@@ -6,20 +6,20 @@ import {
   Table,
   Col,
   Container,
-  Form,
-  FormGroup,
   Input,
   Spinner
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { listResourceApi, authToken, userInfo } from "../../api";
+import { authToken, userInfo } from "../../api";
+import {user} from "./data.json";
 
 export default class Query extends Component {
   constructor(props){
     super(props);
     this.state = {
       users: [],
-      isLoading:false
+      isLoading:false,
+      status:'start'
     }
   }
   componentDidMount(){
@@ -31,7 +31,8 @@ export default class Query extends Component {
       this.setState({isLoading:true})
       let token = await localStorage.getItem(authToken);
       let _id = await localStorage.getItem(userInfo)
-      let {result} = await listResourceApi.auth(`Bearer ${ token }`).post({_id, usertype:"USER"}).json()
+      // let {result} = await listResourceApi.auth(`Bearer ${ token }`).post({_id, usertype:"USER"}).json()
+      let result = user;
       console.log("result", result)
       this.setState({users:result, isLoading:false})
     } catch (error) {
@@ -51,11 +52,22 @@ export default class Query extends Component {
             <tr key={index}>
               <th scope="row">{index + 1}</th>
               <td>
-                <Link to={userLink}>{user.username}</Link>
+                <Link to={userLink}>{user.instanceType}</Link>
               </td>
-              <td>{user.instanceid}</td>
-              <td>Mumbai</td>
-              <td>Active</td>
+              <td>{user.instanceip}</td>
+              <td>{user.username}</td>
+              <td>{user.password}</td>
+              <td>{user.status}
+              <Input type="select" name="status" onChange={(e) => {
+                this.setState({status:e.target.value});
+                alert(`You choosed ${e.target.value} status`)
+                }}>
+                <option value="start">Start</option>
+                <option value="stop">Stop</option>
+                <option value="delete">Delete</option>
+                <option value="reboot">Reboot</option>
+              </Input>
+              </td>
             </tr>
           );
         })
@@ -70,9 +82,9 @@ export default class Query extends Component {
             <Col sm="6" />
             <Col sm="6">
               <InputGroup>
-                <h3>Click to Add Key {" "}</h3>{" "}
-                <Link to={"/form"}>
-                  <Button color="danger">Add Key</Button>
+                <h3>Click to create VPS {" "}</h3>{" "}
+                <Link to={"/formInstance"}>
+                  <Button color="danger">Create VPS</Button>
                 </Link>
               </InputGroup>
             </Col>
@@ -89,9 +101,10 @@ export default class Query extends Component {
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Instance Id</th>
-                  <th>region</th>
+                  <th>Instance Type</th>
+                  <th>Instance IP</th>
+                  <th>Username</th>
+                  <th>Password</th>
                   <th>Status</th>
                 </tr>
               </thead>
