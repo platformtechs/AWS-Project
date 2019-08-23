@@ -16,6 +16,7 @@ const ManageInstance =React.lazy(()=>import('./views/Admin/ManageInstance'));
 const ManageUser = React.lazy(() => import('./views/Admin/ManageUser'));
 const FormUser = React.lazy(() => import('./views/Admin/FormUser'));
 const KeyEdit = React.lazy(() => import('./views/Admin/KeyEdit'));
+const FormInstance = React.lazy(()=> import('./views/Admin/formInstance'));
 
 
 const routes = [
@@ -31,12 +32,12 @@ const routes = [
   { path:'/tabUser', exact:true,name:"TabUser",component:TabUser},
   { path:'/user', exact:true,name:"User",component:User},
   { path:'/form', exact:true,name:"Form",component:Form},
-  { path: '/manage-instance', exact: true, name: "ManageInstance", component: ManageInstance },
+  { path: '/manage-instance', exact: true, name: "Create VPS", component: ManageInstance },
   { path: '/manage-user', exact: true, name: "ManageUser", component: ManageUser },
   { path: '/formUser', exact: true, name: "FormUser", component: FormUser },
   { path: '/formInstance', exact: true, name: "FormInstance", component: FormInstance },
   { path: '/keyEdit', exact: true, name: "KeyEdit", component: KeyEdit },
-
+  { path: '/formInstance', exact: true, name:"FormInstance", component: FormInstance}
 ];
 
 export default routes;

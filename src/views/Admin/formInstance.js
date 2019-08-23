@@ -74,27 +74,32 @@ export default class Example extends React.Component {
                     </InputGroup>
                     <InputGroup className="mb-3">
                       <InputGroupAddon addonType="prepend">
-                        <InputGroupText>@</InputGroupText>
+                        <InputGroupText>
+                        <i className="icon-cursor"></i>
+                        </InputGroupText>
                       </InputGroupAddon>
-                      <Input type="text" placeholder="Email"required onChange={e => this.setState({email:e.target.value})}/>
+                    <Input type="select" placeholder="InstanceType" name="MicrosoftWindowServer2012R2Base" >
+                      <option value="default">Select Instance Type</option>
+                      <option value="T3.MEDDIUM">T3.MEDDIUM</option>
+                      <option value="T2.XLARGE">T2.XLARGE</option>
+                      <option value="T2.SMALL">T2.SMALL</option>
+                      <option value="M5D.XLARGE">M5D.XLARGE</option>
+                      <option value="M5D.2XLARGE">M5D.2XLARGE</option>
+                    </Input>
                     </InputGroup>
                     <InputGroup className="mb-3">
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
-                          <i className="icon-lock"></i>
+                          <i className="icon-cursor"></i>
                         </InputGroupText>
                       </InputGroupAddon>
-                      <Input type="password" placeholder="Password" required onChange={e => this.setState({password:e.target.value})}/>
+                      <Input type="select" placeholder="InstanceType" name="MicrosoftWindowServer2012R2Base" >
+                      <option value="start">Select OS</option>
+                      <option value="ami-03d1bbb0fb080106a">Microsoft Windows Server 2012 R2 Base</option>
+                      <option value="ami-028b3bf1662e6082f">Microsoft Windows Server 2019 Base</option>
+                    </Input>
                     </InputGroup>
-                    <InputGroup className="mb-4">
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="icon-lock"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input type="password" placeholder="Comfirm password" required onChange={e => this.setState({password2:e.target.value})}/>
-                    </InputGroup>
-                    <Button color="success" block onClick={this.register}>Create Account</Button>
+                    <Button color="success" block onClick={this.register}>Create Instance</Button>
                   </Form>
                 </CardBody>
               </Card>
