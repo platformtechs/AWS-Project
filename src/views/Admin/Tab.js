@@ -90,7 +90,7 @@ export default class Tab extends React.Component {
                     </tbody>
                   </Table>
                   <div class="text-left">
-                    <Link to={"/dashboard"}>
+                    <Link to={"/manage-instance"}>
                       <Button class="display-2" color="secondary" size="lg">
                         Back
                       </Button>

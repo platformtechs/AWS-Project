@@ -32,7 +32,7 @@ export default {
           icon: 'icon-cursor',
         },
         {
-          name: 'Manage Instance',
+          name: 'Create VPS',
           url: '/manage-instance',
           icon: 'icon-cursor',
         }
