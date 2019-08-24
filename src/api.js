@@ -24,3 +24,5 @@ export const authToken = "aws/authToken"
 export const userInfo = "aws/userInfo";
 
 export const createInstance = awsApi.url('/api/aws/create');
+
+export const userType = "aws/usertype";

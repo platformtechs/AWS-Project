@@ -1,0 +1,37 @@
+{
+  "userdata" : [
+    {
+      "username" : "sdfghsdf",
+      "email" : "adrdghf@gmail.com",
+      "aceesskey" : "azdxfcgh",
+      "accessid" : "asdfgh",
+      "instanceid" : "adsfsfgd23",
+      "awsadminid" : "afdsgfas",
+      "usertype" : "admin",
+      "createdby" : "bshcfays",
+      "isdeactivate" : "true"
+    },
+    {
+      "username": "sdfghsdf",
+      "email": "adrdghf@gmail.com",
+      "aceesskey": "azdxfcgh",
+      "accessid": "asdfgh",
+      "instanceid": "adsfsfgd23",
+      "awsadminid": "afdsgfas",
+      "usertype": "subadmin",
+      "createdby": "bshcfays",
+      "isdeactivate": "true"
+    },
+    {
+      "username": "sdfghsdf",
+      "email": "adrdghf@gmail.com",
+      "aceesskey": "azdxfcgh",
+      "accessid": "asdfgh",
+      "instanceid": "adsfsfgd23",
+      "awsadminid": "afdsgfas",
+      "usertype": "user",
+      "createdby": "bshcfays",
+      "isdeactivate": "true"
+    }
+  ]
+}

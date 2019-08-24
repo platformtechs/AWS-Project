@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Spinner } from 'reactstrap';
-import { loginApi, authToken, userInfo } from '../../../api';
+import { loginApi, authToken, userInfo, userType } from '../../../api';
 // import { Auth } from 'aws-amplify';
 
 class Login extends Component {
@@ -19,10 +19,15 @@ class Login extends Component {
        console.log("state", this.state)
       let {username, password} = this.state
       this.setState({isLoading:true})
-      let { user, token } = await loginApi.post({ username, password}).json()
-      console.log("user", user)
+      // let { user, token } = await loginApi.post({ username, password}).json()
+      let token ="shckjsnfkjsnfkjnfkjnfjksn";
+      let id = "kjkjnvlkn"
+      let usertype = "SUBADMIN"
+      // console.log("user", user);
+      await localStorage.setItem(userType, usertype)
       await localStorage.setItem(authToken, token);
-      await localStorage.setItem(userInfo, user._id)
+      await localStorage.setItem(userInfo,id)
+
       this.props.history.push("/");
         }catch (error) {
         console.log("err", error)
@@ -90,6 +95,7 @@ class Login extends Component {
                       </Link>
                     </div>
                   </CardBody>
+
                 </Card> */}
               </CardGroup>
             </Col>
