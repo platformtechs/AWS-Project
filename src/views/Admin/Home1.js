@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Query from './ManageUser';
-
+import { Line, Pie } from 'react-chartjs-2';
 import {
   Button,
   ButtonGroup,
@@ -21,91 +20,119 @@ const brandSuccess = getStyle('--success')
 const brandInfo = getStyle('--info')
 const brandDanger = getStyle('--danger')
 
-// var elements = 27;
-// var data1 = [];
-// var data2 = [];
-// var data3 = [];
+// Card Chart 2
+const pie = {
+  labels: [
+    'Pages',
+    'Catogries',
+    'Tags',
+  ],
+  datasets: [
+    {
+      data: [300, 50, 100],
+      backgroundColor: [
+        '#FF6384',
+        '#36A2EB',
+        '#FFCE56',
+      ],
+      hoverBackgroundColor: [
+        '#FF6384',
+        '#36A2EB',
+        '#FFCE56',
+      ],
+    }],
+};
 
-// for (var i = 0; i <= elements; i++) {
-//   data1.push(random(50, 200));
-//   data2.push(random(80, 100));
-//   data3.push(65);
-// }
+//Random Numbers
+function random(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
-// const mainChart = {
-//   labels: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
-//   datasets: [
-//     {
-//       label: 'My First dataset',
-//       backgroundColor: hexToRgba(brandInfo, 10),
-//       borderColor: brandInfo,
-//       pointHoverBackgroundColor: '#fff',
-//       borderWidth: 2,
-//       data: data1,
-//     },
-//     {
-//       label: 'My Second dataset',
-//       backgroundColor: 'transparent',
-//       borderColor: brandSuccess,
-//       pointHoverBackgroundColor: '#fff',
-//       borderWidth: 2,
-//       data: data2,
-//     },
-//     {
-//       label: 'My Third dataset',
-//       backgroundColor: 'transparent',
-//       borderColor: brandDanger,
-//       pointHoverBackgroundColor: '#fff',
-//       borderWidth: 1,
-//       borderDash: [8, 5],
-//       data: data3,
-//     },
-//   ],
-// };
+var elements = 27;
+var data1 = [];
+var data2 = [];
+var data3 = [];
 
-// const mainChartOpts = {
-//   tooltips: {
-//     enabled: false,
-//     custom: CustomTooltips,
-//     intersect: true,
-//     mode: 'index',
-//     position: 'nearest',
-//     callbacks: {
-//       labelColor: function (tooltipItem, chart) {
-//         return { backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].borderColor }
-//       }
-//     }
-//   },
-//   maintainAspectRatio: false,
-//   legend: {
-//     display: false,
-//   },
-//   scales: {
-//     xAxes: [
-//       {
-//         gridLines: {
-//           drawOnChartArea: false,
-//         },
-//       }],
-//     yAxes: [
-//       {
-//         ticks: {
-//           beginAtZero: true,
-//           maxTicksLimit: 5,
-//           stepSize: Math.ceil(250 / 5),
-//           max: 250,
-//         },
-//       }],
-//   },
-//   elements: {
-//     point: {
-//       radius: 0,
-//       hitRadius: 10,
-//       hoverRadius: 4,
-//       hoverBorderWidth: 3,
-//     },
-//   },
-// };
+for (var i = 0; i <= elements; i++) {
+  data1.push(random(50, 200));
+  data2.push(random(80, 100));
+  data3.push(65);
+}
+
+const mainChart = {
+  labels: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+  datasets: [
+    {
+      label: 'My First dataset',
+      backgroundColor: hexToRgba(brandInfo, 10),
+      borderColor: brandInfo,
+      pointHoverBackgroundColor: '#fff',
+      borderWidth: 2,
+      data: data1,
+    },
+    {
+      label: 'My Second dataset',
+      backgroundColor: 'transparent',
+      borderColor: brandSuccess,
+      pointHoverBackgroundColor: '#fff',
+      borderWidth: 2,
+      data: data2,
+    },
+    {
+      label: 'My Third dataset',
+      backgroundColor: 'transparent',
+      borderColor: brandDanger,
+      pointHoverBackgroundColor: '#fff',
+      borderWidth: 1,
+      borderDash: [8, 5],
+      data: data3,
+    },
+  ],
+};
+
+const mainChartOpts = {
+  tooltips: {
+    enabled: false,
+    custom: CustomTooltips,
+    intersect: true,
+    mode: 'index',
+    position: 'nearest',
+    callbacks: {
+      labelColor: function (tooltipItem, chart) {
+        return { backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].borderColor }
+      }
+    }
+  },
+  maintainAspectRatio: false,
+  legend: {
+    display: false,
+  },
+  scales: {
+    xAxes: [
+      {
+        gridLines: {
+          drawOnChartArea: false,
+        },
+      }],
+    yAxes: [
+      {
+        ticks: {
+          beginAtZero: true,
+          maxTicksLimit: 5,
+          stepSize: Math.ceil(250 / 5),
+          max: 250,
+        },
+      }],
+  },
+  elements: {
+    point: {
+      radius: 0,
+      hitRadius: 10,
+      hoverRadius: 4,
+      hoverBorderWidth: 3,
+    },
+  },
+};
 
 class Dashboard extends Component {
   constructor(props) {
@@ -173,31 +200,30 @@ class Dashboard extends Component {
                 </CardBody>
               </CardHeader>
             </Card>
-          </Col>
-        </Row>
+            </Col>
+            </Row>
 
-        <Row>
-          <Col>
-            <Card>
-              <Query />
-              {/* <CardColumns className="cols-2">
+            <Row>
+              <Col>
                 <Card>
-                   <CardHeader>
-                    At A Glance
+                  <CardColumns className="cols-2">
+                    <Card>
+                      <CardHeader>
+                        At A Glance
                   </CardHeader>
-                  <CardBody>
-                    <div className="chart-wrapper">
-                      <Pie data={pie} />
-                    </div>
-                  </CardBody>
+                      <CardBody>
+                        <div className="chart-wrapper">
+                          <Pie data={pie} />
+                        </div>
+                      </CardBody>
+                    </Card>
+                  </CardColumns>
                 </Card>
-              </CardColumns> */}
-            </Card>
-          </Col>
+              </Col>
 
 
-          {/* <Col>
-            <Card>
+              <Col>
+              <Card>
               <CardBody>
                 <Row>
                   <Col sm="5">
@@ -220,12 +246,12 @@ class Dashboard extends Component {
                 </div>
               </CardBody>
             </Card>
-          </Col> */}
-        </Row>
+            </Col>
+            </Row>
 
       </div>
     );
   }
 }
 
-export default Dashboard;
+export default Dashboard1;

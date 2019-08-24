@@ -5,60 +5,41 @@ export default {
       url: '/dashboard',
       icon: 'icon-home',
 
-    },{
-      name: 'My Profile',
-      url: '/my-profile',
-      icon: 'icon-user',
+    },
+     // {
+    //   name: 'My Profile',
+    //   url: '/my-profile',
+    //   icon: 'icon-user',
 
-    },{
+    // },
+    {
       name: 'Change Password',
       url: '/change-password',
       icon: 'icon-key',
 
-    },{
-      name: 'Management',
-      url: '/management',
-      icon: 'icon-people',
+    },
+        // {
+        //   name: 'Manage Key',
+        //   url: '/manage-key',
+        //   icon: 'icon-cursor',
+        // },
+        // {
+        //   name: 'Manage Sub Admin',
+        //   url: '/manage-subadmin',
+        //   icon: 'icon-cursor',
+        // },
+        // {
+        //   name: 'Create VPS',
+        //   url: '/manage-instance',
+        //   icon: 'icon-cursor',
+        // },
 
-      children: [
-        {
-          name: 'Manage Key',
-          url: '/manage-key',
-          icon: 'icon-cursor',
-        },
-        {
-          name: 'Manage Sub Admin',
-          url: '/manage-subadmin',
-          icon: 'icon-cursor',
-        },
-        {
-          name: 'Create VPS',
-          url: '/manage-instance',
-          icon: 'icon-cursor',
-        }
-      ]
-    },/* {
+    /* {
       name: 'Add Users',
       url: '/add-users',
       icon: 'icon-user-follow',
 
-    } */,{
-        name: 'Login/Register',
-        url: '/signup',
-        icon: 'icon-lock',
-        children: [
-          {
-            name: 'Login',
-            url: '/login',
-            icon: 'icon-cursor',
-          },
-          {
-            name: 'Register',
-            url: '/register',
-            icon: 'icon-cursor',
-          }
-        ],
-      },
+    } */,
     {
       name:"Logout",
       url:"/login",

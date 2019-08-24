@@ -138,7 +138,7 @@ export default class Query extends Component {
                   <th>Name</th>
                   <th>Acess Key</th>
                   <th>Access Id</th>
-                  <th>Status</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>{userData}</tbody>
