@@ -8,7 +8,7 @@ class Login extends Component {
   constructor(props){
     super(props);
     this.state ={
-      email: null,
+      username: null,
       password: null,
       isLoading: false
     }
@@ -17,9 +17,9 @@ class Login extends Component {
   login = async () => {
     try {
        console.log("state", this.state)
-      let {email, password} = this.state
+      let { username, password} = this.state
       this.setState({isLoading:true})
-      let {user, token} = await loginApi.post({email, password}).json()
+      let { user, token } = await loginApi.post({ username, password}).json()
       await localStorage.setItem(authToken, token);
       await localStorage.setItem(userInfo, user._id)
       this.props.history.push("/");
@@ -28,7 +28,7 @@ class Login extends Component {
         console.log("err", error)
         this.setState({isLoading:false})
         alert("login failed ! try again")
-      }      
+      }
   }
 
   render() {
@@ -39,7 +39,7 @@ class Login extends Component {
           <Spinner style={{width:"5rem", height:"5rem"}} color="primary"/>
         </div>
       )
-      
+
     }
     return (
       <div className="app flex-row align-items-center">
@@ -58,7 +58,7 @@ class Login extends Component {
                             <i className="icon-user"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="email" placeholder="email" required onChange={e=>this.setState({email:e.target.value})}/>
+                        <Input type="text" placeholder="username" required onChange={e => this.setState({ username:e.target.value})}/>
                       </InputGroup>
                       <InputGroup className="mb-4">
                         <InputGroupAddon addonType="prepend">
