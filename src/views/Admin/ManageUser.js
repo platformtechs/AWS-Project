@@ -6,14 +6,13 @@ import {
   Table,
   Col,
   Container,
-  Form,
-  FormGroup,
-  Input,
   Spinner
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { listResourceApi, authToken, userInfo } from "../../api";
+import { listResourceApi, authToken, userInfo } from "./../../api";
 import { promises } from "fs";
+import { user } from "./data1.json";
+
 export default class Query extends Component {
   constructor(props){
     super(props);
@@ -31,7 +30,8 @@ export default class Query extends Component {
       this.setState({isLoading:true})
       let token = await localStorage.getItem(authToken);
       let _id = await localStorage.getItem(userInfo)
-      let {result} = await listResourceApi.auth(`Bearer ${ token }`).post({_id, usertype:"SUBADMIN"}).json()
+      // let {result} = await listResourceApi.auth(`Bearer ${ token }`).post({_id, usertype:"SUBADMIN"}).json()
+      let result = user;
       console.log("result", result)
       this.setState({users:result, isLoading:false})
     } catch (error) {
@@ -51,7 +51,7 @@ export default class Query extends Component {
         <tr key={index}>
         <th scope="row">{index +1 }</th>
         <td>
-          <Link to={userLink}>{user.username}</Link>
+          <Link to={userLink}>{user.name}</Link>
         </td>
         <td>{user.email}</td>
         <td>{user.status}</td>
@@ -67,12 +67,12 @@ export default class Query extends Component {
         <Container>
           <Row>
             <Col sm="6">
-              <h3>click on button to add sub-admin</h3>
+              <h3>click on button to add Admin</h3>
             </Col>
             <Col sm={{ size: 3, offset: 3 }}>
               <InputGroup>
                 <Link to={"/formUser"}>
-                  <Button color="danger">Add Sub Admin</Button>
+                  <Button color="danger">Add Admin</Button>
                 </Link>
               </InputGroup>
             </Col>
