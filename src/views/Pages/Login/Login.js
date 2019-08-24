@@ -17,13 +17,13 @@ class Login extends Component {
   login = async () => {
     try {
        console.log("state", this.state)
-      let { username, password} = this.state
+      let {username, password} = this.state
       this.setState({isLoading:true})
       let { user, token } = await loginApi.post({ username, password}).json()
+      console.log("user", user)
       await localStorage.setItem(authToken, token);
       await localStorage.setItem(userInfo, user._id)
       this.props.history.push("/");
-      this.setState({isLoading:false})
         }catch (error) {
         console.log("err", error)
         this.setState({isLoading:false})
@@ -58,7 +58,7 @@ class Login extends Component {
                             <i className="icon-user"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="text" placeholder="username" required onChange={e => this.setState({ username:e.target.value})}/>
+                        <Input type="text" placeholder="Username" required onChange={e => this.setState({ username:e.target.value})}/>
                       </InputGroup>
                       <InputGroup className="mb-4">
                         <InputGroupAddon addonType="prepend">

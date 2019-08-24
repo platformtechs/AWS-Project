@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 // import { renderRoutes } from 'react-router-config';
 import './App.scss';
+import { authToken } from './api';
 
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
@@ -38,7 +39,7 @@ function PrivateRoute ({ component: Component, ...rest }) {
     <Route
       {...rest}
       render={props =>
-        sessionStorage.getItem("aws@token") ? (
+        localStorage.getItem(authToken) ? (
           <Component {...props} />
         ) : (
           <Redirect
