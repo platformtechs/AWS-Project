@@ -54,7 +54,7 @@ export default class Query extends Component {
           <Link to={userLink}>{user.username}</Link>
         </td>
         <td>{user.email}</td>
-        <td>Active</td>
+        <td>{user.status}</td>
       </tr>
       )
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Dashboard = React.lazy(() => import('./views/Dashboard'));
+// const Dashboard = React.lazy(() => import('./views/Dashboard'));
+const Dashboard = React.lazy(() => import('./views/Admin/Home'));
 const Settings = React.lazy(() => import('./views/setting/setting'));
 const Profile = React.lazy(() => import('./views/setting/profile'));
 const ChangePassword = React.lazy(() => import('./views/setting/change-password'));
