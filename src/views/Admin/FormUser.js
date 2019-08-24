@@ -86,14 +86,6 @@ export default class Example extends React.Component {
                       </InputGroupAddon>
                       <Input type="password" placeholder="Password" required onChange={e => this.setState({password:e.target.value})}/>
                     </InputGroup>
-                    <InputGroup className="mb-4">
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="icon-lock"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input type="password" placeholder="Comfirm password" required onChange={e => this.setState({password2:e.target.value})}/>
-                    </InputGroup>
                     <Button color="success" block onClick={this.register}>Create Account</Button>
                   </Form>
                 </CardBody>
