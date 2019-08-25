@@ -1,4 +1,5 @@
 import { userType } from "./api";
+const usertype = localStorage.getItem(userType);
 
 const Admin = {
   items:[
@@ -88,7 +89,6 @@ const User = {
 };
 
 const navData = () => {
-  let usertype = localStorage.getItem(userType);
   switch(usertype){
     case 'ADMIN':
       return Admin
