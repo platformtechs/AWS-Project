@@ -62,7 +62,7 @@ export default class Example extends React.Component {
               <Card className="mx-4">
                 <CardBody className="p-4">
                   <Form>
-                    <h1 className="text-center" >Add Sub Admin</h1>
+                    <h1 className="text-center" >Add Admin</h1>
                     <p className="text-muted text-center">Create your account</p>
                     <InputGroup className="mb-3">
                       <InputGroupAddon addonType="prepend">
