@@ -49,16 +49,16 @@ export default class Query extends Component {
       }
       return(
         <tr key={index}>
-        <th scope="row">{index +1 }</th>
-        <td>
-          <Link to={userLink}>{user.username}</Link>
-        </td>
-        <td>{user.email}</td>
+          <th scope="row">{index +1 }</th>
+          <td>
+            <Link to={userLink}>{user.username}</Link>
+          </td>
+          <td>{user.email}</td>
           <td>{!user.isdeactivated ? "Active":"Deactive"}</td>
-      </tr>
+        </tr>
       )
     }
-      ):"no data";
+      ):<tr><td>No data</td></tr>;
     return (
       <div
         className="container"
