@@ -9,9 +9,9 @@ import {
   Spinner
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { listResourceApi, authToken, userInfo } from "./../../api";
+import { listResourceApi, authToken, userInfo, UserApi } from "./../../api";
 import { promises } from "fs";
-import { user } from "./data1.json";
+// import { user } from "./data1.json";
 
 export default class Query extends Component {
   constructor(props){
@@ -30,8 +30,8 @@ export default class Query extends Component {
       this.setState({isLoading:true})
       let token = await localStorage.getItem(authToken);
       let _id = await localStorage.getItem(userInfo)
-      // 
-      let result = user 
+      let {result}= await listResourceApi.auth(`Bearer ${token}`).post({_id, usertype:"SUBADMIN"}).json();
+      // let result = user
       console.log("result", result)
       this.setState({users:result, isLoading:false})
     } catch (error) {
@@ -42,7 +42,7 @@ export default class Query extends Component {
 
   render() {
     let {users, isLoading} = this.state;
-    let userData = users ? users.map((user, index) => {
+    let userData = users && users.length > 0 ? users.map((user, index) => {
       let  userLink = {
         pathname:"/tabUser",
         user
@@ -51,10 +51,10 @@ export default class Query extends Component {
         <tr key={index}>
         <th scope="row">{index +1 }</th>
         <td>
-          <Link to={userLink}>{user.name}</Link>
+          <Link to={userLink}>{user.username}</Link>
         </td>
         <td>{user.email}</td>
-        <td>{user.status}</td>
+          <td>{!user.isdeactivated ? "Active":"Deactive"}</td>
       </tr>
       )
     }

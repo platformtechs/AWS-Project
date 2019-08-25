@@ -19,15 +19,15 @@ class Login extends Component {
        console.log("state", this.state)
       let {username, password} = this.state
       this.setState({isLoading:true})
-      // let { user, token } = await loginApi.post({ username, password}).json()
-      let token ="shckjsnfkjsnfkjnfkjnfjksn";
-      let _id = "kjkjnvlkn"
-      let usertype = "USER"
-      // console.log("user", user);
-      await localStorage.setItem(userType, usertype)
+      let { user, token } = await loginApi.post({ username, password}).json()
+      // let token ="shckjsnfkjsnfkjnfkjnfjksn";
+      // let _id = "kjkjnvlkn"
+      // let usertype = "USER"
+      console.log("user", user);
+      await localStorage.setItem(userType, user.usertype)
       await localStorage.setItem(authToken, token);
-      await localStorage.setItem(userInfo,_id)
-      switch(usertype){
+      await localStorage.setItem(userInfo,user._id)
+      switch(user.usertype){
         case 'ADMIN':
           this.props.history.push("/dashboard");
           break
@@ -37,7 +37,7 @@ class Login extends Component {
         default:
           this.props.history.push("/dashboard2");
       }
-      
+
         }catch (error) {
         console.log("err", error)
         this.setState({isLoading:false})
