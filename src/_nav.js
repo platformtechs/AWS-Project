@@ -31,7 +31,7 @@ const subAdmin = {
   items: [
     {
       name: 'Home',
-      url: '/dashboard',
+      url: '/dashboard13',
       icon: 'icon-home'
     },
     {

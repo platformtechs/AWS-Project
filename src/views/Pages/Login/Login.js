@@ -21,14 +21,23 @@ class Login extends Component {
       this.setState({isLoading:true})
       // let { user, token } = await loginApi.post({ username, password}).json()
       let token ="shckjsnfkjsnfkjnfkjnfjksn";
-      let id = "kjkjnvlkn"
-      let usertype = "SUBADMIN"
+      let _id = "kjkjnvlkn"
+      let usertype = "USER"
       // console.log("user", user);
       await localStorage.setItem(userType, usertype)
       await localStorage.setItem(authToken, token);
-      await localStorage.setItem(userInfo,id)
-
-      this.props.history.push("/");
+      await localStorage.setItem(userInfo,_id)
+      switch(usertype){
+        case 'ADMIN':
+          this.props.history.push("/dashboard");
+          break
+        case 'SUBADMIN':
+          this.props.history.push("/dashboard13");
+          break
+        default:
+          this.props.history.push("/dashboard2");
+      }
+      
         }catch (error) {
         console.log("err", error)
         this.setState({isLoading:false})

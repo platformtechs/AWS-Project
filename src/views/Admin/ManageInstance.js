@@ -45,20 +45,20 @@ export default class Query extends Component {
     let userData = users
       ? users.map((user, index) => {
           let userLink = {
-            pathname: "/tab",
+            pathname: "/instance",
             user
           };
           return (
             <tr key={index}>
               <th scope="row">{index + 1}</th>
               <td>
-                <Link to={userLink}>{user.instanceType}</Link>
+                <Link to={userLink}>{user.username}</Link>
               </td>
-              <td>{user.instanceip}</td>
-              <td>{user.username}</td>
               <td>{user.password}</td>
+              <td>{user.instanceip}</td>
+              <td>{user.instanceType}</td>
               <td>{user.status}
-              <Input type="select" name="status" onChange={(e) => {
+              {/* <Input type="select" name="status" onChange={(e) => {
                 this.setState({status:e.target.value});
                 alert(`You choosed ${e.target.value} status`)
                 }}>
@@ -66,7 +66,7 @@ export default class Query extends Component {
                 <option value="stop">Stop</option>
                 <option value="delete">Delete</option>
                 <option value="reboot">Reboot</option>
-              </Input>
+              </Input> */}
               </td>
             </tr>
           );
@@ -78,7 +78,8 @@ export default class Query extends Component {
         style={{ backgroundColor: "white", padding: 20, marginBottom: 20 }}
       >
         <Container>
-          <Row>
+          <h3 className="text-center">All Instances</h3>
+          {/* <Row>
             <Col sm="6" />
             <Col sm="6">
               <InputGroup>
@@ -88,7 +89,7 @@ export default class Query extends Component {
                 </Link>
               </InputGroup>
             </Col>
-          </Row>
+          </Row> */}
           {isLoading ? (
             <div className="app flex-row align-items-center justify-content-center">
               <Spinner
@@ -101,10 +102,10 @@ export default class Query extends Component {
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Instance Type</th>
-                  <th>Instance IP</th>
                   <th>Username</th>
                   <th>Password</th>
+                  <th>Instance IP</th>
+                  <th>Instance Type</th>
                   <th>Status</th>
                 </tr>
               </thead>

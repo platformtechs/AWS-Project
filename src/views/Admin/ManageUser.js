@@ -30,8 +30,8 @@ export default class Query extends Component {
       this.setState({isLoading:true})
       let token = await localStorage.getItem(authToken);
       let _id = await localStorage.getItem(userInfo)
-      // let {result} = await listResourceApi.auth(`Bearer ${ token }`).post({_id, usertype:"SUBADMIN"}).json()
-      let result = user;
+      // 
+      let result = user 
       console.log("result", result)
       this.setState({users:result, isLoading:false})
     } catch (error) {
@@ -67,7 +67,6 @@ export default class Query extends Component {
         <Container>
           <Row>
             <Col sm="6">
-              <h3>click on button to add Admin</h3>
             </Col>
             <Col sm={{ size: 3, offset: 3 }}>
               <InputGroup>
@@ -102,7 +101,7 @@ export default class Query extends Component {
               <Spinner style={{width:"5rem", height:"5rem"}} color="primary"/>
             </div>
           ) : (
-            <Table>
+            <Table style={{marginTop:"20px"}}>
               <thead>
                 <tr>
                   <th>#</th>

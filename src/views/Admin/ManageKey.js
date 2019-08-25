@@ -93,7 +93,8 @@ export default class Query extends Component {
               </td>
               <td>{maskedaccesskey}</td>
               <td>{user.accessid}</td>
-              <td><button className="btn btn-primary" onClick={()=>this.handleLogin(user, index)}>{loginNumber === index ? "Logout" : "Login"}</button></td>
+              <td><Button color="success" onClick={()=>this.props.history.push("form-instance")}>create instance</Button></td>
+              <td><Button color="danger" onClick={()=>alert("instace created")}>X</Button></td>
             </tr>
           );
         })
@@ -117,8 +118,8 @@ export default class Query extends Component {
         <Col sm="1" />
             <Col sm={{span:3, offset:3}}>
               <InputGroup>
-                <Link to={"/form"}>
-                  <Button color="danger">CLick to Add Key</Button>
+                <Link to={"/add-account"}>
+                  <Button color="primary">Add AWS Account</Button>
                 </Link>
               </InputGroup>
             </Col>
@@ -138,7 +139,8 @@ export default class Query extends Component {
                   <th>Name</th>
                   <th>Acess Key</th>
                   <th>Access Id</th>
-                  <th></th>
+                  <th>Action</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>{userData}</tbody>

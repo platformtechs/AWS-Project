@@ -145,18 +145,23 @@ class Dashboard extends Component {
                 <CardBody>
                   <Row className="text-center">
                     <Col sm={12} md className="mb-sm-2 mb-0">
-                      <div className="text-muted" style={{ fontSize: 20 }}>Total No. of Hours</div>
-                      <strong style={{ fontSize: 25 }}>30</strong>
+                      <div className="text-muted" style={{ fontSize: 20 }}>Total No. of AWS Account</div>
+                      <strong style={{ fontSize: 25 }}>4</strong>
                       {/* <Progress className="progress-xs mt-2" color="success" value="40" /> */}
                     </Col>
                     <Col sm={12} md className="mb-sm-2 mb-0 d-md-down-none">
-                      <div className="text-muted" style={{ fontSize: 20 }}>Total running Hours</div>
+                      <div className="text-muted" style={{ fontSize: 20 }}>Total No of Instances on All Account</div>
                       <strong style={{ fontSize: 25 }}>20</strong>
                       {/* <Progress className="progress-xs mt-2" color="info" value="20" /> */}
                     </Col>
                     <Col sm={12} md className="mb-sm-2 mb-0">
-                      <div className="text-muted" style={{ fontSize: 20 }}>Remaining Hours</div>
-                      <strong style={{ fontSize: 25 }}>10</strong>
+                      <div className="text-muted" style={{ fontSize: 20 }}>No. of Running Instances</div>
+                      <strong style={{ fontSize: 25 }}>12</strong>
+                      {/* <Progress className="progress-xs mt-2" color="warning" value="60" /> */}
+                    </Col>
+                    <Col sm={12} md className="mb-sm-2 mb-0">
+                      <div className="text-muted" style={{ fontSize: 20 }}>No. of Stopped Instances</div>
+                      <strong style={{ fontSize: 25 }}>8</strong>
                       {/* <Progress className="progress-xs mt-2" color="warning" value="60" /> */}
                     </Col>
 
