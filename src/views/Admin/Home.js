@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import Query from './ManageUser';
 
 import {
-  Button,
-  ButtonGroup,
-  ButtonToolbar,
   Card,
   CardBody,
   CardHeader,
@@ -118,6 +115,10 @@ class Dashboard extends Component {
       dropdownOpen: false,
       radioSelected: 2,
     };
+  }
+
+  componentDidMount(){
+    // this.props.location.reload();
   }
 
   toggle() {
