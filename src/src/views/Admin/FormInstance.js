@@ -31,20 +31,37 @@ export default class Example extends React.Component {
     return (
       <Form>
         <FormGroup>
-          <Label for="exampleSelect" onChange={e => this.setState({ accessKey: e.target.value })}>Access Key</Label>
+          <Label for="exampleSelect" onChange={e => this.setState({ accessKey: e.target.value })}>Aws User</Label>
           <Input type="select" name="select" id="exampleSelect">
-            <option>1 xvhasgwfdqwty45qedbmahg83bmdkjahdi-d</option>
-            <option>DBYUAWBFWaskjdguyw82-3e2ebdh</option>
+            <option>Mark</option>
+            <option>Ovune</option>
+            <option>Throfh</option>
           </Input>
         </FormGroup>
         <FormGroup>
+          <Label for="exampleSelect" onChange={e => this.setState({ accessKey: e.target.value })}>Image OS</Label>
+          <Input type="select" name="select" id="exampleSelect">
+            <option>Mark</option>
+            <option>Ovune</option>
+            <option>Throfh</option>
+          </Input>
+        </FormGroup>
+        <FormGroup>
+          <Label for="exampleSelect" onChange={e => this.setState({ accessKey: e.target.value })}>Instance Type</Label>
+          <Input type="select" name="select" id="exampleSelect">
+            <option>Abc</option>
+            <option>Ovhftr</option>
+            <option>Thhgfh</option>
+          </Input>
+        </FormGroup>
+        {/* <FormGroup>
           <Label for="examplePassword" onChange={e => this.setState({ username: e.target.value })}>Username</Label>
           <Input type="password" name="password" id="examplePassword" placeholder="enter username" />
         </FormGroup>
         <FormGroup>
           <Label for="examplePassword" onChange={e => this.setState({ password: e.target.value })}>Password</Label>
           <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
-        </FormGroup>
+        </FormGroup> */}
         <Button color="danger" onClick={this.submit}>Submit</Button>
       </Form>
     );

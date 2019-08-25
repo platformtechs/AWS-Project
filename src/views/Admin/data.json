@@ -1,0 +1,48 @@
+{
+  "user": [
+    {
+      "instanceType": "T3.MEDIUM",
+      "instanceid": "gr545cfdafwer3",
+      "instanceip": "172.23.09.243",
+      "username": "abc",
+      "password": "123",
+      "status": "stop"
+    }, {
+      "instanceType": "T2.SMALL",
+      "instanceid": "shgdyi3tr3jwdb",
+      "instanceip": "170.2.56.743",
+      "username": "pqr",
+      "password": "234",
+      "status": "running"
+    }, {
+      "instanceType": "T2.LARGE",
+      "instanceid": "gr545cfdsb323r",
+      "instanceip": "172.6.23.675",
+      "username": "xyz",
+      "password": "454",
+      "status": "stop"
+    }, {
+      "instanceType": "M5D.XLARGE",
+      "instanceid": "grqyuqwge6733r",
+      "instanceip": "172.0.23.172",
+      "username": "abp",
+      "password": "498",
+      "status": "stop"
+    }, {
+      "instanceType": "M5D.2XLARGE",
+      "instanceid": "gr545cfdsb323r",
+      "instanceip": "127.0.0.1;",
+      "username": "xyz",
+      "password": "454",
+      "status": "stop"
+    }, {
+        "instanceType": "T3.XLARGE",
+        "instanceid": "revgxfdzsjhc",
+        "instanceip": "154.7.4.679",
+        "username": "xyz",
+        "password": "454",
+        "status": "running"
+    }
+  ]
+
+}

@@ -1,75 +1,119 @@
-import React, { Component } from 'react';
-import { Button, Row, InputGroup, Table, Col, Container, Form, FormGroup, Input } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import {
+  Button,
+  Row,
+  InputGroup,
+  Table,
+  Col,
+  Container,
+  Input,
+  Spinner
+} from "reactstrap";
+import { Link } from "react-router-dom";
+import { authToken, userInfo } from "../../api";
+import {user} from "./data.json";
+
 export default class Query extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      users: [],
+      isLoading:false,
+      status:'start'
+    }
+  }
+  componentDidMount(){
+    this.fetchData();
+  }
+
+  fetchData = async () => {
+    try {
+      this.setState({isLoading:true})
+      let token = await localStorage.getItem(authToken);
+      let _id = await localStorage.getItem(userInfo)
+      // let {result} = await listResourceApi.auth(`Bearer ${ token }`).post({_id, usertype:"USER"}).json()
+      let result = user;
+      console.log("result", result)
+      this.setState({users:result, isLoading:false})
+    } catch (error) {
+      console.log("err", error);
+      this.setState({ isLoading: false });
+    }
+  }
   render() {
+    let { users, isLoading } = this.state;
+    let userData = users
+      ? users.map((user, index) => {
+          let userLink = {
+            pathname: "/instance",
+            user
+          };
+          return (
+            <tr key={index}>
+              <th scope="row">{index + 1}</th>
+              <td>
+                <Link to={userLink}>{user.username}</Link>
+              </td>
+              <td>{user.password}</td>
+              <td>{user.instanceip}</td>
+              <td>{user.instanceType}</td>
+              <td>{user.status}
+              {/* <Input type="select" name="status" onChange={(e) => {
+                this.setState({status:e.target.value});
+                alert(`You choosed ${e.target.value} status`)
+                }}>
+                <option value="start">Start</option>
+                <option value="stop">Stop</option>
+                <option value="delete">Delete</option>
+                <option value="reboot">Reboot</option>
+              </Input> */}
+              </td>
+            </tr>
+          );
+        })
+      : "no data";
     return (
-      <div className="container" style={{ backgroundColor: 'white', padding: 20, marginBottom: 20 }}>
+      <div
+        className="container"
+        style={{ backgroundColor: "white", padding: 20, marginBottom: 20 }}
+      >
         <Container>
-
-          <Row><Col sm="4"></Col>
-            <Col sm="8">
+          <h3 className="text-center">All Instances</h3>
+          {/* <Row>
+            <Col sm="6" />
+            <Col sm="6">
               <InputGroup>
-                <h3 >Click on "Add Instance" to Add Instances</h3>{'  '}
-
-                <Link to={"/formUser"}><Button color="danger" >Add Instance</Button>
+                <h3>Click to create VPS {" "}</h3>{" "}
+                <Link to={"/formInstance"}>
+                  <Button color="danger">Create VPS</Button>
                 </Link>
-              </InputGroup></Col></Row>
-          <Form>
-            <hr />
-            <FormGroup row>
-              <Col sm={11}>
-                <Input placeholder="Enter name to search for Role" required />
-              </Col>
-              <Button color="primary">Search</Button>
-            </FormGroup>
-            <FormGroup>
-              <Input type="select" name="select" id="exampleSelect">
-                <option>All Status</option>
-                <option>Active</option>
-                <option>Inactive</option>
-                <option>Suspended</option>
-              </Input>
-            </FormGroup>
-          </Form>
-          <Table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td><Link to={"/tab"}>Mark</Link></td>
-                <td>Active</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td><Link to={"/tab"}>Ovune</Link></td>
-                <td>Active</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td><Link to={"/tab"}>Throfh</Link></td>
-                <td>Active</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td><Link to={"/tab"}>Throfh</Link></td>
-                <td>Active</td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td><Link to={"/tab"}>Throfh</Link></td>
-                <td>Active</td>
-              </tr>
-            </tbody>
-          </Table>
+              </InputGroup>
+            </Col>
+          </Row> */}
+          {isLoading ? (
+            <div className="app flex-row align-items-center justify-content-center">
+              <Spinner
+                style={{ width: "5rem", height: "5rem" }}
+                color="primary"
+              />
+            </div>
+          ) : (
+            <Table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Username</th>
+                  <th>Password</th>
+                  <th>Instance IP</th>
+                  <th>Instance Type</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>{userData}</tbody>
+            </Table>
+          )}
         </Container>
       </div>
-    )
+    );
   }
 }

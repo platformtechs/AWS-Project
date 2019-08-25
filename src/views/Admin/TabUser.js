@@ -7,11 +7,13 @@ import {
   NavItem,
   NavLink,
   Row,
-  Col
+  Col,
+  Spinner
 } from "reactstrap";
 import classnames from "classnames";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import { getUser, authToken, userInfo } from "../../api";
 
 export default class Tab extends React.Component {
   constructor(props) {
@@ -19,10 +21,29 @@ export default class Tab extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      activeTab: "1"
+      activeTab: "1",
+      isLoading:false,
+      user:this.props.location.user
     };
   }
+  componentDidMount(){
+    if(!this.props.location.user){
+      this.fetchData()
+    }
+  }
 
+  fetchData = async () => {
+    try {
+      let token = await localStorage.getItem(authToken)
+    let _id = await localStorage.getItem(userInfo)
+    let {user} = getUser.auth(`Bearer ${token}`).post({_id}).json()
+    this.setState({user:user, isLoading:false})
+    } catch (error) {
+      console.log("err", error)
+      this.setState({isLoading:false})
+    }
+    
+  }
   toggle(tab) {
     if (this.state.activeTab !== tab) {
       this.setState({
@@ -31,6 +52,8 @@ export default class Tab extends React.Component {
     }
   }
   render() {
+    console.log(this.props)
+    let user = this.state.user
     return (
       <div>
         <Nav tabs>
@@ -41,10 +64,9 @@ export default class Tab extends React.Component {
                 this.toggle("1");
               }}
             >
-              <h3>Key Details</h3>
+              <h3>User Details</h3>
             </NavLink>
           </NavItem>
-
         </Nav>
         <TabContent activeTab={this.state.activeTab}>
           <TabPane tabId="1">
@@ -57,23 +79,23 @@ export default class Tab extends React.Component {
                     <tbody>
                       <tr>
                         <td>Name : </td>
-                        <td>User</td>
+                        <td>{user.username}</td>
                       </tr>
                       <tr>
                         <td>Email-id : </td>
-                        <td>dfj232@gmail.com</td>
+                        <td>{user.email}</td>
                       </tr>
                       <tr>
                         <td>Password : </td>
-                        <td>eluga129</td>
+                        <td>XXXXXXXXXXXX</td>
                       </tr>
                       <tr>
-                        <td>Access Key: </td>
-                        <td>174duebafhhdau87233ry2-1284u9-81qjweh3u</td>
+                        <td>Access Id : </td>
+                        <td>{user.accessid}</td>
                       </tr>
                       <tr>
-                        <td>Access Id: </td>
-                        <td>diwhe7238rbduye87320dnqiwdj7238_duq3d38</td>
+                        <td>Access Key : </td>
+                        <td>{user.accesskey}</td>
                       </tr>
                       <tr>
                         <td>Status : </td>
@@ -82,7 +104,7 @@ export default class Tab extends React.Component {
                     </tbody>
                   </Table>
                   <div class="text-left">
-                    <Link to={"/dashboard"}>
+                    <Link to={"/manage-subadmin"}>
                       <Button class="display-2" color="secondary" size="lg">
                         Back
                       </Button>

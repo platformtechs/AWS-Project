@@ -1,0 +1,23 @@
+ {
+  "user": [
+    {
+      "name": "abc",
+      "email": "abc@gmail.com",
+      "status": "active"
+    }, {
+      "name": "abc",
+      "email": "abc@gmail.com",
+      "status": "active"
+    }, {
+      "name": "abc",
+      "email": "abc@gmail.com",
+      "status": "active"
+    },
+    {
+      "name": "abc",
+      "email": "abc@gmail.com",
+      "status": "active"
+    }
+
+  ]
+}

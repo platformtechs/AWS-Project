@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 // import { renderRoutes } from 'react-router-config';
 import './App.scss';
+import { authToken } from './api';
 
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
@@ -25,12 +26,34 @@ class App extends Component {
               <Route exact path="/register" name="Register Page" render={props => <Register {...props}/>} />
               <Route exact path="/404" name="Page 404" render={props => <Page404 {...props}/>} />
               <Route exact path="/500" name="Page 500" render={props => <Page500 {...props}/>} />
-              <Route path="/" name="Home" render={props => <DefaultLayout {...props}/>} />
+              <PrivateRoute path="/" name="Home" component={props => <DefaultLayout {...props}/>} />
             </Switch>
           </React.Suspense>
       </HashRouter>
     );
   }
+}
+
+function PrivateRoute ({ component: Component, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        localStorage.getItem(authToken) ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: {
+                from: props.location
+              }
+            }}
+          />
+        )
+      }
+    />
+  );
 }
 
 export default App;

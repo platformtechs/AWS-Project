@@ -1,71 +1,158 @@
-export default {
-  items: [
+import { userType } from "./api";
+const usertype = localStorage.getItem(userType);
+
+const Admin = {
+  items:[
     {
       name: 'Home',
       url: '/dashboard',
-      icon: 'icon-home',
-
-    },{
-      name: 'My Profile',
-      url: '/my-profile',
-      icon: 'icon-user',
-
-    },{
+      icon: 'icon-home'
+    },
+    {
       name: 'Change Password',
       url: '/change-password',
       icon: 'icon-key',
 
-    },{
-      name: 'Management',
-      url: '/management',
-      icon: 'icon-people',
-
-      children: [
-        {
-          name: 'Manage Key',
-          url: '/manage-key',
-          icon: 'icon-cursor',
-        },
-        {
-          name: 'Manage User',
-          url: '/manage-user',
-          icon: 'icon-cursor',
-        },
-        {
-          name: 'Manage Instance',
-          url: '/manage-instance',
-          icon: 'icon-cursor',
-        }
-      ]
-    },{
-      name: 'Add Users',
-      url: '/add-users',
-      icon: 'icon-user-follow',
-
-    },{
-        name: 'Login/Register',
-        url: '/signup',
-        icon: 'icon-lock',
-        children: [
-          {
-            name: 'Login',
-            url: '/login',
-            icon: 'icon-cursor',
-          },
-          {
-            name: 'Register',
-            url: '/register',
-            icon: 'icon-cursor',
-          }
-        ],
-      },
+    },
     {
-      name:"Logout",
-      url:"/login",
+      name: "Logout",
+      url: "/login",
       icon: 'icon-logout',
     }
+
   ]
 };
+
+// const hello= () => Admin
+// let nav = hello()
+// console.log("hell", nav)
+
+// export default nav;
+const subAdmin = {
+  items: [
+    {
+      name: 'Home',
+      url: '/dashboard13',
+      icon: 'icon-home'
+    },
+    {
+      name:'All AWS Accounts',
+      url: '/manage-aws',
+      icon: 'icon-cursor'
+    },
+    {
+      name: 'Add AWS Account',
+      url: '/add-account',
+      icon: 'icon-lock'
+    },
+    {
+      name: 'All Instances',
+      url: '/manage-instance',
+      icon: 'icon-key',
+
+    },
+    {
+      name: 'Change Password',
+      url: '/change-password',
+      icon: 'icon-key',
+
+    },
+    {
+      name: "Logout",
+      url: "/login",
+      icon: 'icon-logout',
+    }
+
+  ]
+};
+
+const User = {
+  items: [
+    {
+      name: 'Home',
+      url: '/dashboard2',
+      icon: 'icon-home'
+    },
+    {
+      name: 'Change Password',
+      url: '/change-password',
+      icon: 'icon-key',
+
+    },
+    {
+      name: "Logout",
+      url: "/login",
+      icon: 'icon-logout',
+    }
+
+  ]
+};
+
+const navData = () => {
+  switch(usertype){
+    case 'ADMIN':
+      return Admin
+    case 'SUBADMIN':
+      return subAdmin
+    default:
+      return User
+  }
+}
+
+const nav = navData();
+console.log("hell", nav)
+export default nav;
+
+
+// export default {
+//   items: [
+//     {
+//       name: 'Home',
+//       url: '/dashboard',
+//       icon: 'icon-home',
+
+//     },
+//      // {
+//     //   name: 'My Profile',
+//     //   url: '/my-profile',
+//     //   icon: 'icon-user',
+
+//     // },
+//     {
+//       name: 'Change Password',
+//       url: '/change-password',
+//       icon: 'icon-key',
+
+//     },
+//         // {
+//         //   name: 'Manage Key',
+//         //   url: '/manage-key',
+//         //   icon: 'icon-cursor',
+//         // },
+//         // {
+//         //   name: 'Manage Sub Admin',
+//         //   url: '/manage-subadmin',
+//         //   icon: 'icon-cursor',
+//         // },
+//         // {
+//         //   name: 'Create VPS',
+//         //   url: '/manage-instance',
+//         //   icon: 'icon-cursor',
+//         // },
+
+//     /* {
+//       name: 'Add Users',
+//       url: '/add-users',
+//       icon: 'icon-user-follow',
+
+//     } */,
+//     {
+//       name:"Logout",
+//       url:"/login",
+//       icon: 'icon-logout',
+//     }
+//   ]
+// };
 
 
 

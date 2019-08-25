@@ -2,9 +2,6 @@ import React from "react";
 import {
   TabContent,
   Table,
-  FormGroup,
-  Label,
-  Input,
   TabPane,
   Nav,
   NavItem,
