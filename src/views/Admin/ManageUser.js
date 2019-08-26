@@ -9,7 +9,7 @@ import {
   Spinner
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { listResourceApi, authToken, userInfo, UserApi } from "./../../api";
+import { listResourceApi, authToken, userInfo, UserApi, deleteUserApi } from "./../../api";
 import { promises } from "fs";
 // import { user } from "./data1.json";
 

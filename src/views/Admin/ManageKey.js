@@ -12,7 +12,7 @@ import {
   Spinner
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { listResourceApi, authToken, userInfo } from "../../api";
+import { listResourceApi, authToken, userInfo, deleteUserApi } from "../../api";
 import {user} from "./key.json";
 
 
@@ -38,13 +38,25 @@ export default class Query extends Component {
       this.setState({isLoading:true})
       let token = await localStorage.getItem(authToken);
       let _id = await localStorage.getItem(userInfo)
-      // let {result} = await listResourceApi.auth(`Bearer ${ token }`).post({_id, usertype:"AWSADMIN"}).json()
-      let result = user;
+      let {result} = await listResourceApi.auth(`Bearer ${ token }`).post({_id, usertype:"AWSADMIN"}).json()
+      // let result = user;
       console.log("result", result)
       this.setState({users:result, isLoading:false})
     } catch (error) {
       console.log("err", error);
       this.setState({ isLoading: false });
+    }
+  }
+
+  handleDelete = async (username) => {
+    this.setState({ isLoading: true })
+    let token = await localStorage.getItem(authToken)
+    let { error } = await deleteUserApi.auth(`Bearer ${token}`).post({ username }).json();
+    if (error) {
+      alert("user not delete")
+      this.setState({ isLoading: false })
+    } else {
+      this.fetchData();
     }
   }
 
@@ -83,22 +95,22 @@ export default class Query extends Component {
             pathname: "/tabUser",
             user
           };
-        let maskedaccesskey = 'XXXXXXXX' + user.accesskey.slice(-4);
+        // let maskedaccesskey = 'XXXXXXXX' + user.accesskey.slice(-4);
 
           return (
             <tr key={index}>
               <th scope="row">{index + 1}</th>
               <td>
-                <Link to={userLink}>{user.username}</Link>
+                {user.username}
               </td>
-              <td>{maskedaccesskey}</td>
+              {/* <td>{maskedaccesskey}</td> */}
               <td>{user.accessid}</td>
               <td><Button color="success" onClick={()=>this.props.history.push("form-instance")}>create instance</Button></td>
-              <td><Button color="danger" onClick={()=>alert("instace created")}>X</Button></td>
+              <td><Button color="danger" onClick={()=>this.handleDelete(user.username)}>X</Button></td>
             </tr>
           );
         })
-      : "no data";
+      : <tr><td>no data</td></tr>;
     return (
       <div>
         {isAlert && <div className="alert alert-success" role="alert">
@@ -137,10 +149,10 @@ export default class Query extends Component {
                 <tr>
                   <th>#</th>
                   <th>Name</th>
-                  <th>Acess Key</th>
+                  {/* <th>Acess Key</th> */}
                   <th>Access Id</th>
                   <th>Action</th>
-                  <th>Action</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>{userData}</tbody>

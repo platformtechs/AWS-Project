@@ -16,6 +16,8 @@ export const createSubAdminApi = UserApi.url('/create/subadmin');
 
 export const listResourceApi = UserApi.url('/all');
 
+export const deleteUserApi = UserApi.url('/delete');
+
 export const getUser = UserApi.url('/get');
 
 export const loginApi = UserApi.url('/login');
