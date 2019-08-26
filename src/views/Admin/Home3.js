@@ -120,6 +120,12 @@ class Dashboard extends Component {
     };
   }
 
+    componentDidMount() {
+      if (this.props.location.load) {
+        window.location.reload()
+      }
+    }
+
   toggle() {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen,

@@ -29,13 +29,23 @@ class Login extends Component {
       await localStorage.setItem(userInfo,user._id)
       switch(user.usertype){
         case 'ADMIN':
-          this.props.history.push("/dashboard");
+          this.props.history.push({
+            pathname:"/dashboard",
+
+            load:true
+          });
           break
         case 'SUBADMIN':
-          this.props.history.push("/dashboard13");
+          this.props.history.push({
+            pathname:"/dashboard13",
+            load:true
+        });
           break
         default:
-          this.props.history.push("/dashboard2");
+          this.props.history.push({
+            pathname:"/dashboard2",
+            load:true
+          });
       }
 
         }catch (error) {

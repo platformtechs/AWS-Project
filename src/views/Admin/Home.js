@@ -117,8 +117,10 @@ class Dashboard extends Component {
     };
   }
 
-  componentDidMount(){
-    // this.props.location.reload();
+  componentDidMount() {
+    if (this.props.location.load) {
+      window.location.reload()
+    }
   }
 
   toggle() {
