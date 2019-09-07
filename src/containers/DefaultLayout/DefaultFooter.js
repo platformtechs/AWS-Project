@@ -15,8 +15,8 @@ class DefaultFooter extends Component {
 
     return (
       <React.Fragment>
-        <span>copyrights © 2019. All rights reserved.</span>
-        <span className="ml-auto">Made with love on Earth</span>
+        <span>copyrights © 2019. All rights reserved amazonvps.in </span>
+        <span className="ml-auto"><a href="https://platformtechs.in" target="_blank" style={{color:"black", textDecoration:"none"}}>Designed By Platform Tech Solutions</a></span>
       </React.Fragment>
     );
   }

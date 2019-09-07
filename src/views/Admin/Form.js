@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Spinner } from 'reactstrap';
+import { Button, Card, CardBody, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Spinner } from 'reactstrap';
 import { createKeyApi, authToken, userInfo } from '../../api';
 
 export default class Example extends React.Component {
@@ -18,7 +18,6 @@ export default class Example extends React.Component {
         try {
             let {
                 username,
-                password,
                 accesskey,
                 accessid,
             } = this.state;

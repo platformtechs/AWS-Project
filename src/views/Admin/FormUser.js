@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Spinner } from 'reactstrap';
+import { Button, Card, CardBody, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Spinner } from 'reactstrap';
 import { createSubAdminApi, authToken, userInfo } from '../../api';
 
 export default class Example extends React.Component {
@@ -9,7 +9,6 @@ export default class Example extends React.Component {
         username: null,
         password: null,
         email: null,
-        password2: null,
         isLoading: false
       }
     }
@@ -20,17 +19,14 @@ export default class Example extends React.Component {
         let {
           username,
           password,
-          email,
-          password2
+          email
         } = this.state;
         this.setState({
           isLoading: true
         })
         console.log("state", this.state)
-        if (password !== password2) {
-          alert("password not matched")
-        }
-        if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
+
+        if (!(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
           alert("enter valid email")
         }
         let token = await localStorage.getItem(authToken)

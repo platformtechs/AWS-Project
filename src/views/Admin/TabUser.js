@@ -8,12 +8,11 @@ import {
   NavLink,
   Row,
   Col,
-  Spinner
 } from "reactstrap";
 import classnames from "classnames";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
-import { getUser, authToken, userInfo } from "../../api";
+import {authToken, userInfo, getUserApi } from "../../api";
 
 export default class Tab extends React.Component {
   constructor(props) {
@@ -29,6 +28,8 @@ export default class Tab extends React.Component {
   componentDidMount(){
     if(!this.props.location.user){
       this.fetchData()
+    } else {
+      localStorage.setItem("temp", this.props.location.user._id)
     }
   }
 
@@ -36,7 +37,7 @@ export default class Tab extends React.Component {
     try {
       let token = await localStorage.getItem(authToken)
     let _id = await localStorage.getItem(userInfo)
-    let {user} = getUser.auth(`Bearer ${token}`).post({_id}).json()
+    let {user} = getUserApi.auth(`Bearer ${token}`).post({_id}).json()
     this.setState({user:user, isLoading:false})
     } catch (error) {
       console.log("err", error)
@@ -51,6 +52,12 @@ export default class Tab extends React.Component {
       });
     }
   }
+
+  componentDidCatch() {
+    console.log("err")
+    this.props.history.push('/')
+  }
+  
   render() {
     console.log(this.props)
     let user = this.state.user
@@ -72,30 +79,22 @@ export default class Tab extends React.Component {
           <TabPane tabId="1">
             <Row>
               <Col sm="6">
-                <div container>
+                <div className="container">
                   <br />
                   <br />
                   <Table>
                     <tbody>
                       <tr>
                         <td>Name : </td>
-                        <td>{user.username}</td>
+                        <td>{user && user.username}</td>
                       </tr>
                       <tr>
                         <td>Email-id : </td>
-                        <td>{user.email}</td>
+                        <td>{user && user.email}</td>
                       </tr>
                       <tr>
                         <td>Password : </td>
-                        <td>XXXXXXXXXXXX</td>
-                      </tr>
-                      <tr>
-                        <td>Access Id : </td>
-                        <td>{user.accessid}</td>
-                      </tr>
-                      <tr>
-                        <td>Access Key : </td>
-                        <td>{user.accesskey}</td>
+                        <td>{user && user.panelpass || ''}</td>
                       </tr>
                       <tr>
                         <td>Status : </td>
@@ -103,24 +102,13 @@ export default class Tab extends React.Component {
                       </tr>
                     </tbody>
                   </Table>
-                  <div class="text-left">
+                  <div className="text-left">
                     <Link to={"/manage-subadmin"}>
-                      <Button class="display-2" color="secondary" size="lg">
+                      <Button className="display-2" color="secondary" size="lg">
                         Back
                       </Button>
                     </Link>
                     {"    "}
-                    <Link to={"/keyEdit"}>
-                    <Button class="display-2" color="success" size="lg">
-                      Edit
-                    </Button>
-                    </Link>
-                    {"    "}
-                    <Link to={"/login"}>
-                      <Button class="display-2" color="primary" size="lg">
-                        Log In
-                      </Button>
-                    </Link>
                   </div>
                 </div>
               </Col>

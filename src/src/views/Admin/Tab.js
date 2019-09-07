@@ -59,7 +59,7 @@ export default class Tab extends React.Component {
           <TabPane tabId="1">
             <Row>
               <Col sm="6">
-                <div container>
+                <div className="container">
                   <br />
                   <br />
                   <Table>
@@ -111,7 +111,7 @@ export default class Tab extends React.Component {
           <TabPane tabId="2">
             <Row>
               <Col sm="6">
-                <div container>
+                <div className="container">
                   <br />
                   <br />
                   <Table>

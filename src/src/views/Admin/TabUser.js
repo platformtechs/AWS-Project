@@ -30,6 +30,12 @@ export default class Tab extends React.Component {
       });
     }
   }
+
+  componentDidCatch() {
+    console.log("err", err)
+    this.props.history.push('/')
+  }
+
   render() {
     return (
       <div>
@@ -50,7 +56,7 @@ export default class Tab extends React.Component {
           <TabPane tabId="1">
             <Row>
               <Col sm="6">
-                <div container>
+                <div className="container">
                   <br />
                   <br />
                   <Table>

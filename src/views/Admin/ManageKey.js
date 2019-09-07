@@ -60,32 +60,32 @@ export default class Query extends Component {
     }
   }
 
-  handleLogin = async (user, index) => {
-    let {isLogedIn} = this.state;
-    console.log("this", this.state)
-    console.log("login")
-    try {
-      if (!isLogedIn) {
-        await localStorage.setItem("aws/awsId", user.id);
-        await localStorage.setItem("aws/username", user.username)
-        this.setState({ isLogedIn: true, loginNumber: index, isAlert: true, username: user.username })
-        setTimeout(()=>this.setState({isAlert:false, displayUserName: true, }),1000)
+  // handleLogin = async (user, index) => {
+  //   let {isLogedIn} = this.state;
+  //   console.log("this", this.state)
+  //   console.log("login")
+  //   try {
+  //     if (!isLogedIn) {
+  //       await localStorage.setItem("aws/awsId", user.id);
+  //       await localStorage.setItem("aws/username", user.username)
+  //       this.setState({ isLogedIn: true, loginNumber: index, isAlert: true, username: user.username })
+  //       setTimeout(()=>this.setState({isAlert:false, displayUserName: true, }),1000)
 
 
-      } else {
-        if(this.state.loginNumber !== index){
-          alert("please logout first");
-          return 1;
-        }
-        await localStorage.removeItem("aws/awsId");
-        await localStorage.removeItem("aws/username");
-        this.setState({ isLogedIn: false, loginNumber:null, username:"" })
-      }
-    } catch (error) {
-      console.log("eror : ", error);
-    }
+  //     } else {
+  //       if(this.state.loginNumber !== index){
+  //         alert("please logout first");
+  //         return 1;
+  //       }
+  //       await localStorage.removeItem("aws/awsId");
+  //       await localStorage.removeItem("aws/username");
+  //       this.setState({ isLogedIn: false, loginNumber:null, username:"" })
+  //     }
+  //   } catch (error) {
+  //     console.log("eror : ", error);
+  //   }
 
-  }
+  // }
 
   render() {
     let { users, isLoading, isAlert, loginNumber, displayUserName, username } = this.state;
@@ -105,7 +105,7 @@ export default class Query extends Component {
               </td>
               {/* <td>{maskedaccesskey}</td> */}
               <td>{user.accessid}</td>
-              <td><Button color="success" onClick={()=>this.props.history.push("form-instance")}>create instance</Button></td>
+              <td><Button color="success" onClick={()=>this.props.history.push({pathname:"form-instance", user})}>create instance</Button></td>
               <td><Button color="danger" onClick={()=>this.handleDelete(user.username)}>X</Button></td>
             </tr>
           );

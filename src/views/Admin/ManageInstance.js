@@ -10,7 +10,7 @@ import {
   Spinner
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { authToken, userInfo } from "../../api";
+import { authToken, userInfo, listResourceApi, userType, getUserApi } from "../../api";
 import {user} from "./data.json";
 
 export default class Query extends Component {
@@ -19,7 +19,8 @@ export default class Query extends Component {
     this.state = {
       users: [],
       isLoading:false,
-      status:'start'
+      status:'start',
+      usertype:''
     }
   }
   componentDidMount(){
@@ -31,17 +32,25 @@ export default class Query extends Component {
       this.setState({isLoading:true})
       let token = await localStorage.getItem(authToken);
       let _id = await localStorage.getItem(userInfo)
-      // let {result} = await listResourceApi.auth(`Bearer ${ token }`).post({_id, usertype:"USER"}).json()
-      let result = user;
-      console.log("result", result)
-      this.setState({users:result, isLoading:false})
+      let usertype = await localStorage.getItem(userType);
+      let data = []
+      if(usertype === "USER"){
+        let {user} = await getUserApi.auth(`Bearer ${ token }`).post({_id}).json()
+        data.push(user);
+      } else {
+        let {result} = await listResourceApi.auth(`Bearer ${ token }`).post({_id, usertype:"USER"}).json()
+        data = result
+      }
+      
+      console.log("result", data)
+      this.setState({users:data, isLoading:false, usertype})
     } catch (error) {
       console.log("err", error);
       this.setState({ isLoading: false });
     }
   }
   render() {
-    let { users, isLoading } = this.state;
+    let { users, isLoading, usertype } = this.state;
     let userData = users
       ? users.map((user, index) => {
           let userLink = {
@@ -54,10 +63,9 @@ export default class Query extends Component {
               <td>
                 <Link to={userLink}>{user.username}</Link>
               </td>
-              <td>{user.password}</td>
-              <td>{user.instanceip}</td>
-              <td>{user.instanceType}</td>
-              <td>{user.status}
+              <td>{user.panelpass}</td>
+              <td>{user.expiredat.split("T")[0]}</td>
+              <td>{user.instancestatus}
               {/* <Input type="select" name="status" onChange={(e) => {
                 this.setState({status:e.target.value});
                 alert(`You choosed ${e.target.value} status`)
@@ -78,7 +86,7 @@ export default class Query extends Component {
         style={{ backgroundColor: "white", padding: 20, marginBottom: 20 }}
       >
         <Container>
-          <h3 className="text-center">All Instances</h3>
+          <h3 className="text-center">{usertype ==="USER" ? "instance": "All Instances"}</h3>
           {/* <Row>
             <Col sm="6" />
             <Col sm="6">
@@ -103,9 +111,8 @@ export default class Query extends Component {
                 <tr>
                   <th>#</th>
                   <th>Username</th>
-                  <th>Password</th>
-                  <th>Instance IP</th>
-                  <th>Instance Type</th>
+                  <th>Panel Password</th>
+                  <th>Expired At</th>
                   <th>Status</th>
                 </tr>
               </thead>

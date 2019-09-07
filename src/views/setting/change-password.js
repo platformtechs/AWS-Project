@@ -1,14 +1,13 @@
 import React from 'react';
-import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Spinner } from 'reactstrap';
-import { createSubAdminApi, authToken, userInfo, createInstance } from '../../api';
+import { Button, Card, CardBody, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Spinner } from 'reactstrap';
+import { authToken, userInfo, changePassword,} from '../../api';
 
 export default class Example extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        username: null,
+        oldPassword:null,
         password: null,
-        email: null,
         password2: null,
         isLoading: false
       }
@@ -29,14 +28,18 @@ export default class Example extends React.Component {
         if (password !== password2) {
           alert("password not matched")
         }
-        let token = await localStorage.getItem(authToken)
+        let oldToken = await localStorage.getItem(authToken)
         let _id = await localStorage.getItem(userInfo)
-        // let {user} = await createInstance.auth(`Bearer ${ token }`).post({email, password, username, _id})
-        // console.log("usr", user)
+        let { token } = await changePassword.auth(`Bearer ${ oldToken }`).post({_id, password, oldPassword}).json()
+        this.setState({
+          isLoading: false
+        })
+        await localStorage.setItem(authToken, token)
         this.props.history.goBack();
-        alert("user created")
+        alert("Password changed")
       } catch (error) {
         console.log("err", error)
+        alert("error try again");
         this.setState({
           isLoading: false
         })
@@ -82,7 +85,7 @@ export default class Example extends React.Component {
                           <i className="icon-lock"></i>
                         </InputGroupText>
                       </InputGroupAddon>
-                      <Input type="password2" placeholder="Confirm New Password" required onChange={e => this.setState({password2:e.target.value})}/>
+                      <Input type="password" placeholder="Confirm New Password" required onChange={e => this.setState({password2:e.target.value})}/>
                     </InputGroup>
                     <Button color="success" block onClick={this.register}>Submit</Button>
                   </Form>

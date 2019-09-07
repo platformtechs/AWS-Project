@@ -9,8 +9,7 @@ import {
   Spinner
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { listResourceApi, authToken, userInfo, UserApi, deleteUserApi } from "./../../api";
-import { promises } from "fs";
+import { listResourceApi, authToken, userInfo} from "./../../api";
 // import { user } from "./data1.json";
 
 export default class Query extends Component {
@@ -54,7 +53,7 @@ export default class Query extends Component {
             <Link to={userLink}>{user.username}</Link>
           </td>
           <td>{user.email}</td>
-          <td>{!user.isdeactivated ? "Active":"Deactive"}</td>
+          <td>{user.isdeactivated ? "Active":"Deactive"}</td>
         </tr>
       )
     }
@@ -76,26 +75,6 @@ export default class Query extends Component {
               </InputGroup>
             </Col>
           </Row>
-          {/* <Form>
-            <hr />
-            <FormGroup row>
-              <Col sm={11}>
-                <Input
-                  placeholder="Enter name to search for Role"
-                  required
-                />
-              </Col>
-              <Button color="primary">Search</Button>
-            </FormGroup>
-            <FormGroup>
-              <Input type="select" name="select" id="exampleSelect">
-                <option>All Status</option>
-                <option>Active</option>
-                <option>Inactive</option>
-                <option>Suspended</option>
-              </Input>
-            </FormGroup>
-          </Form> */}
           {isLoading ? (
             <div className = "app flex-row align-items-center justify-content-center" >
               <Spinner style={{width:"5rem", height:"5rem"}} color="primary"/>
