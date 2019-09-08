@@ -34,10 +34,30 @@ export default class Query extends Component {
       console.log("result", result)
       this.setState({users:result, isLoading:false})
     } catch (error) {
-      console.log("err", error);
-      this.setState({ isLoading: false });
+      console.log("error : ", error);
+      this.setState({
+        isLoading: false
+      });
     }
   }
+
+  handleSubAdmin = (isactivated) => {
+      this.setState((prevState) => ({
+        isactivated: !prevState.isactivated
+      }))
+      console.log('isactivated: ' + isactivated)
+     }
+
+  handleDelete = (_id) => {
+      const filteredItems = this.state.users.filter(user => {
+        return user._id !== _id;
+      })
+      this.setState({
+        users: filteredItems,
+      })
+       console.log('Delete Button!');
+     }
+
 
   render() {
     let {users, isLoading} = this.state;
@@ -52,8 +72,13 @@ export default class Query extends Component {
           <td>
             <Link to={userLink}>{user.username}</Link>
           </td>
-          <td>{user.email}</td>
-          <td>{user.isdeactivated ? "Active":"Deactive"}</td>
+          <td>{user.mobile}</td>
+          <td>{user.plan}</td>
+          <td></td>
+          <td></td>
+          <td><Button onClick={() => this.handleSubAdmin(user.isactivated)}>{user.isactivated ? "Deactivate" : "Activate"}</Button></td>
+          <td><Button color="primary">Send</Button></td>
+          <td><Button color="danger" onClick={() => this.handleDelete(user._id)}>Delete</Button></td>
         </tr>
       )
     }
@@ -70,7 +95,7 @@ export default class Query extends Component {
             <Col sm={{ size: 3, offset: 3 }}>
               <InputGroup>
                 <Link to={"/formUser"}>
-                  <Button color="danger">Add Admin</Button>
+                  <Button color="danger">Create Sub-Admin</Button>
                 </Link>
               </InputGroup>
             </Col>
@@ -85,8 +110,13 @@ export default class Query extends Component {
                 <tr>
                   <th>#</th>
                   <th>Name</th>
-                  <th>Email</th>
-                  <th>Status</th>
+                  <th>Phone</th>
+                  <th>Plan</th>
+                  <th>Date Created</th>
+                  <th>Days Remaining</th>
+                  <th>Action</th>
+                  <th>Send Message</th>
+                  <th>Terminate</th>
                 </tr>
               </thead>
               <tbody>{userData}</tbody>

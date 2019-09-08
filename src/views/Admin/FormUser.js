@@ -8,7 +8,8 @@ export default class Example extends React.Component {
       this.state = {
         username: null,
         password: null,
-        email: null,
+        mobile: null,
+        plan: null,
         isLoading: false
       }
     }
@@ -19,19 +20,21 @@ export default class Example extends React.Component {
         let {
           username,
           password,
-          email
+          mobile,
+          plan,
         } = this.state;
         this.setState({
           isLoading: true
         })
         console.log("state", this.state)
 
-        if (!(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
-          alert("enter valid email")
-        }
+        // if (!(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(phone))) {
+        //   alert("enter valid email")
+        // }
         let token = await localStorage.getItem(authToken)
         let createdby = await localStorage.getItem(userInfo)
-        let {user} = await createSubAdminApi.auth(`Bearer ${ token }`).post({email, password, username, createdby})
+        let createdAt = await localStorage.getItem(createdAt)
+        let {user} = await createSubAdminApi.auth(`Bearer ${ token }`).post({plan, mobile, password, username, createdby, createdAt})
         console.log("usr", user)
         this.props.history.goBack();
         alert("user created")
@@ -42,6 +45,7 @@ export default class Example extends React.Component {
         })
       }
     }
+
   render() {
     let { isLoading } = this.state
     if(isLoading){
@@ -58,7 +62,7 @@ export default class Example extends React.Component {
               <Card className="mx-4">
                 <CardBody className="p-4">
                   <Form>
-                    <h1 className="text-center" >Add Admin</h1>
+                    <h1 className="text-center" >Add Sub Admin</h1>
                     <p className="text-muted text-center">Create your account</p>
                     <InputGroup className="mb-3">
                       <InputGroupAddon addonType="prepend">
@@ -70,10 +74,26 @@ export default class Example extends React.Component {
                     </InputGroup>
                     <InputGroup className="mb-3">
                       <InputGroupAddon addonType="prepend">
-                        <InputGroupText>@</InputGroupText>
+                      <InputGroupText>
+                        <i className="icon-phone"></i>
+                      </InputGroupText>
                       </InputGroupAddon>
-                      <Input type="text" placeholder="Email"required onChange={e => this.setState({email:e.target.value})}/>
+                      <Input type="text" placeholder="Contact Number"required onChange={e => this.setState({mobile:e.target.value})}/>
                     </InputGroup>
+                  <InputGroup className="mb-3">
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <i className="icon-cursor"></i>
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input type="select" placeholder="Select Package" name="MicrosoftWindowServer2012R2Base" onChange={(e) => this.setState({ plan: e.target.value })}>
+                      <option value="default">Select Plan</option>
+                      <option value="30">30 days</option>
+                      <option value="90">90 days</option>
+                      <option value="180">180 days</option>
+                    </Input>
+                  </InputGroup>
+
                     <InputGroup className="mb-3">
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
@@ -82,7 +102,7 @@ export default class Example extends React.Component {
                       </InputGroupAddon>
                       <Input type="password" placeholder="Password" required onChange={e => this.setState({password:e.target.value})}/>
                     </InputGroup>
-                    <Button color="success" block onClick={this.register}>Create Account</Button>
+                    <Button type="submit" color="success" block onClick={this.register}>Create Account</Button>
                   </Form>
                 </CardBody>
               </Card>

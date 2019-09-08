@@ -148,17 +148,17 @@ class Dashboard extends Component {
                 <CardBody>
                   <Row className="text-center">
                     <Col sm={12} md className="mb-sm-2 mb-0">
-                      <div className="text-muted" style={{ fontSize: 20 }}>Total No. of Admin</div>
+                      <div className="text-muted" style={{ fontSize: 20 }}>Total Number of Sub Admins</div>
                       <strong style={{ fontSize: 25 }}>4</strong>
                       {/* <Progress className="progress-xs mt-2" color="success" value="40" /> */}
                     </Col>
                     <Col sm={12} md className="mb-sm-2 mb-0 d-md-down-none">
-                      <div className="text-muted" style={{ fontSize: 20 }}>No.of Admin Activated</div>
+                      <div className="text-muted" style={{ fontSize: 20 }}>Total Activated</div>
                       <strong style={{ fontSize: 25 }}>3</strong>
                       {/* <Progress className="progress-xs mt-2" color="info" value="20" /> */}
                     </Col>
                     <Col sm={12} md className="mb-sm-2 mb-0">
-                      <div className="text-muted" style={{ fontSize: 20 }}>No. of Admin Activated</div>
+                      <div className="text-muted" style={{ fontSize: 20 }}>Total Deactivated</div>
                       <strong style={{ fontSize: 25 }}>1</strong>
                       {/* <Progress className="progress-xs mt-2" color="warning" value="60" /> */}
                     </Col>

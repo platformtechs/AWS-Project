@@ -1,8 +1,8 @@
 import wretch from "wretch";
 
 // const ROOT_URL = "https://shrouded-crag-73220.herokuapp.com";
-// const ROOT_URL = "http://localhost:5000"
-const ROOT_URL = "http://13.235.9.108:5000";
+const ROOT_URL = "http://localhost:5000"
+// const ROOT_URL = "http://172.16.8.255:5000";
 
 export const awsApi = wretch(ROOT_URL);
 
